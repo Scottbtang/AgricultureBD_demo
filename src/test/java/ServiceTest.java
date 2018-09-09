@@ -39,7 +39,7 @@ public class ServiceTest extends BaseTest{
                 province,market,type,name,src,dst);
         logger.info(reList.toString());
     }
-//    @Test
+    @Test
     public void DatePriceServiceTest2(){
         String province = "山西";
         String market = "山西省太原市河西农产品有限公司";
@@ -82,12 +82,12 @@ public class ServiceTest extends BaseTest{
 
     }
 
-//    @Test
+    @Test
     public void CountryViewServiceTest(){
 
     }
 
-//    @Test
+    @Test
     public void  ForecastServiceTest() throws ParseException {
         String province = "山西";
         String market = "山西省太原市河西农产品有限公司";
@@ -101,7 +101,7 @@ public class ServiceTest extends BaseTest{
         logger.info(reList2.toString());
     }
 
-//    @Test
+    @Test
     public  void csvReTypeTest(){
         String province = "山西";
         String market = "山西省太原市河西农产品有限公司";
@@ -129,7 +129,7 @@ public class ServiceTest extends BaseTest{
         String type = "蔬菜";
         logger.info(datePriceService.getCounter(province,market,type).toString());
     }
-//    @Test
+    @Test
     public  void countryViewTest(){
         logger.info("\n 进行全国视图测试。。。。");
         System.out.println(countryViewService.getCountryViewPrice("2017-02-16","蔬菜","大白菜"));
