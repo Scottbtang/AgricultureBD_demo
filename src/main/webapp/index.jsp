@@ -61,26 +61,27 @@
 <body>
 
 <!----------------------------- 导航栏部分----------------------- -->
-<div id="type-dialogBox">  </div>
-<div class="top_t">
-	<div class="top_tittle">
-		<div class="logo" style="font-size: 22px">
-			<font color="white">全国农业市场信息大数据分析平台 </font>
-		</div>
-		<span style="display: none"> </span>
+<jsp:include page="top.jsp"></jsp:include>
+<%--<div id="type-dialogBox">  </div>--%>
+<%--<div class="top_t">--%>
+	<%--<div class="top_tittle">--%>
+		<%--<div class="logo" style="font-size: 22px">--%>
+			<%--<font color="white">全国农业市场信息大数据分析平台 </font>--%>
+		<%--</div>--%>
+		<%--<span style="display: none"> </span>--%>
 
-		<div class="nav">
-			<ul class ="menus">
-				<li><a href="./index.jsp" class="nav_aclick">首页</a></li>
-				<li><a href="./control.jsp"  >数据监控</a></li>
-				<li><a href="./contrast.jsp" >数据查询</a></li>
-				<li><a href="./forecast.jsp">价格预测</a></li>
-				<li><a href="./EnterpriseMap.jsp">企业地图</a></li>
+		<%--<div class="nav">--%>
+			<%--<ul class ="menus">--%>
+				<%--<li><a href="./index.jsp" class="nav_aclick">首页</a></li>--%>
+				<%--<li><a href="./control.jsp"  >数据监控</a></li>--%>
+				<%--<li><a href="./contrast.jsp" >数据查询</a></li>--%>
+				<%--<li><a href="./forecast.jsp">价格预测</a></li>--%>
+				<%--<li><a href="./EnterpriseMap.jsp">企业地图</a></li>--%>
 
-			</ul>
-		</div>
-	</div>
-</div>
+			<%--</ul>--%>
+		<%--</div>--%>
+	<%--</div>--%>
+<%--</div>--%>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/radialIndicator.min.js"></script>
@@ -93,7 +94,6 @@
     <%--var da = ${mapData};--%>
 </script>
 <div class="main">
-
 	<div class="main_center">
 		<jsp:include page="foto.jsp"></jsp:include><%--新页面导入--%>
 		<div class="price_5">
@@ -104,28 +104,27 @@
 		<jsp:include page="bottom.jsp"></jsp:include>
 	</div>
 </div>
-<%--客服--%>
-<style type="text/css">
-	*{margin:0;padding:0;list-style-type:none;}
-	a,img{border:0;}
+	<%--客服--%>
+	<style type="text/css">
+		*{margin:0;padding:0;list-style-type:none;}
+		a,img{border:0;}
 
-	/* suspend */
-	.suspend{width:40px;height:198px;position:fixed;top:200px;right:0;overflow:hidden;z-index:9999;}/*客服标签*/
-	.suspend dl{width:120px;height:198px;border-radius:25px 0 0 25px;padding-left:40px;box-shadow:0 0 5px #e4e8ec;}
-	.suspend dl dt{width:40px;height:198px;background:url(images/suspend.png);position:absolute;top:0;left:0;cursor:pointer;}
-	.suspend dl dd.suspendQQ{width:120px;height:85px;background:#ffffff;}
-	.suspend dl dd.suspendQQ a{width:120px;height:85px;display:block;background:url(images/suspend.png) -40px 0;overflow:hidden;}
-	.suspend dl dd.suspendTel{width:120px;height:112px;background:#ffffff;border-top:1px solid #e4e8ec;}
-	.suspend dl dd.suspendTel a{width:120px;height:112px;display:block;background:url(images/suspend.png) -40px -86px;overflow:hidden;}
-</style>
-
-<div class="suspend">
-	<dl>
-		<dt class="IE6PNG"></dt>
-		<dd class="suspendQQ"><a href="http://shang.qq.com/wpa/qunwpa?idkey=cb91b633f1db596a948828f4f333dbb7394ceda014c958cf" target="_blank"></a></dd>
-		<dd class="suspendTel"><a href="javascript:void(0);"></a></dd>
-	</dl>
-</div><%--客服链接--%>
+		/* suspend */
+		.suspend{width:40px;height:198px;position:fixed;top:200px;right:0;overflow:hidden;z-index:9999;}/*客服标签*/
+		.suspend dl{width:120px;height:198px;border-radius:25px 0 0 25px;padding-left:40px;box-shadow:0 0 5px #e4e8ec;}
+		.suspend dl dt{width:40px;height:198px;background:url(images/suspend.png);position:absolute;top:0;left:0;cursor:pointer;}
+		.suspend dl dd.suspendQQ{width:120px;height:85px;background:#ffffff;}
+		.suspend dl dd.suspendQQ a{width:120px;height:85px;display:block;background:url(images/suspend.png) -40px 0;overflow:hidden;}
+		.suspend dl dd.suspendTel{width:120px;height:112px;background:#ffffff;border-top:1px solid #e4e8ec;}
+		.suspend dl dd.suspendTel a{width:120px;height:112px;display:block;background:url(images/suspend.png) -40px -86px;overflow:hidden;}
+	</style>
+	<div class="suspend">
+		<dl>
+			<dt class="IE6PNG"></dt>
+			<dd class="suspendQQ"><a href="http://shang.qq.com/wpa/qunwpa?idkey=cb91b633f1db596a948828f4f333dbb7394ceda014c958cf" target="_blank"></a></dd>
+			<dd class="suspendTel"><a href="javascript:void(0);"></a></dd>
+		</dl>
+	</div><%--客服链接--%>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -141,6 +140,5 @@
         });
     });
 </script><%--客服脚本--%>
-
 </body>
 </html>
