@@ -12,7 +12,8 @@
 	</style>
 
 </head>
-<body><script src="/demos/googlegg.js"></script>
+<body>
+<%--<script src="/demos/googlegg.js"></script>--%>
 
 <%--<h2>jQuery宽屏3D旋转切换图片代码</h2>
 

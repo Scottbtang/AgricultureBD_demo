@@ -239,13 +239,13 @@
 					<h3>登录</h3>
 				</div>
 				<div class="theme-popbod dform">
-					<form class="theme-signin" name="loginform" action="" method="post">
-						<ol>
-							<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
-							<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" /></li>
-							<li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" /></li>
-							<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
-						</ol>
+					<form class="theme-signin" name="loginform" action="http://localhost:8080/agriculture/doLogin" method="post">
+						<li>
+						<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
+						<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
+						<li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
+						<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>
+						</li>
 					</form>
 				</div>
 			</div>

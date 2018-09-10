@@ -35,10 +35,19 @@ public class AuthenicateServiceImpl implements AuthenticateService {
                 .andUsernameEqualTo(username);
         List<UserPasswd> query = userPasswdMapper.selectByExample(example);
         if(query.size() <= 0)
+        {
+            logger.error("查询错误");
             return 1;
+        }
+
         UserPasswd userPasswd = query.get(0);
         if(!userPasswd.getPassword().equals(password))
+        {
+            logger.error("密码不相等");
             return 2;
+        }
+
+
         /**
          * TODO  add token in cookie;
          */
@@ -53,6 +62,7 @@ public class AuthenicateServiceImpl implements AuthenticateService {
         } catch (JWTCreationException exception){
             logger.error("JWT CREATE ERROR");
         }
+        System.out.println(token);
         Cookie cookie = new Cookie("jwt",token);
         response.addCookie(cookie);
         return 0;
