@@ -15,10 +15,7 @@
     <meta http-equiv="description" content="This is my page">
     <link rel="shortcut icon" href="images/yn.png"  />
     <link rel="stylesheet" type="text/css" href="css/common.css" />
-    <link href="css/index.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/nongye_price.css" />
-    <link rel="stylesheet" type="text/css" href="css/jquery.dialogbox.css" />
-    <link rel="stylesheet" type="text/css" href="css/datouwang.css" />
     <link rel="stylesheet" type="text/css" href="css/buttonstyle.css" />
     <style type="text/css">
         .dialog_p{

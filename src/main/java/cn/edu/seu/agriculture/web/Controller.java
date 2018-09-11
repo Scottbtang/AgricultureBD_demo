@@ -9,14 +9,15 @@ import cn.edu.seu.agriculture.service.CountryViewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -34,22 +35,53 @@ public class Controller {
     private CountryViewService countryViewService;
     @Autowired
     private PriceForecastService priceForecastService;
+    @Autowired
+    private AuthenticateService authenticateService;
 
+
+    /**
+     * 认证私有工具函数
+     * @param request
+     * @return 一个表示状态的int
+     */
+    private static final int NO_LOGIN = -1;
+    private static final int LOGIN_SUCCESS = 0;
+    private static final int NO_USERNAME = 1;
+    private static final int PASSWD_ERROR = 2;
+    private int authenticate(HttpServletRequest request){
+        Cookie[] cookies =  request.getCookies();
+        boolean hasJwt = false;
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("jwt")){
+                String token = cookie.getValue();
+                int re = authenticateService.authenticate(token);
+                hasJwt = true;
+                return  re;
+            }
+        }
+        if(!hasJwt){
+            return NO_LOGIN;
+        }
+        return LOGIN_SUCCESS;
+    }
     @RequestMapping(value = "/datePrice/{province}/{market}/{type}/{name}",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public String datePriceHandler(@PathVariable("province")String province,
                                        @PathVariable("market")String market,
                                        @PathVariable("type")String type,
-                                       @PathVariable("name")String name ) {
+                                       @PathVariable("name")String name ,
+                                        HttpServletRequest request) {
+
         List<Map<String,Object>> reList = datePriceService.getPriceListByInfo(
                 province,market,type,name);
-        logger.info(reList.toString());
+
         return reTypeService.toJson(reList).toString();
     }
 
     @RequestMapping(value = "/datePrice",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public ModelAndView datePricePage(){
+
         ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
         retMap.setViewName("/datePrice.jsp");
         return retMap;
@@ -152,5 +184,19 @@ public class Controller {
         return reTypeService.toJson(datePriceService.getCounter(province,market,type)).toString();
     }
 
-
+    //登录请求
+    @RequestMapping(value = "/doLogin",method = RequestMethod.POST, produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public String doLogin(HttpServletRequest request, HttpServletResponse response, String log, String pwd){
+        System.out.println("Controller doing login:"+log+" "+pwd);
+        int re = authenticateService.login(log ,pwd ,response);
+        if(re == NO_USERNAME){
+            return "没有此用户";
+        }else if(re == PASSWD_ERROR)
+        {
+            return "密码错误";
+        }else {
+            return "登录成功";
+        }
+    }
 }

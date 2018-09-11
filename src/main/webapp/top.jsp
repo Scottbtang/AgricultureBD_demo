@@ -228,9 +228,9 @@
 			<font color="white">全国农业市场信息大数据分析平台 </font>
 		</div>
 		<span style="display: none"> </span>
-		<c:if test="${user!=null }">
+		<c:if test="${sessionScope.status != null }">
 			<div class="login_register" style="font-size: 12px">
-				<a href="./user.do?method=quit">退出系统</a>
+				<a href="./logout.do?method=quit">退出系统</a>
 			</div>
 		</c:if>
 			<div class="theme-popover">
@@ -239,14 +239,13 @@
 					<h3>登录</h3>
 				</div>
 				<div class="theme-popbod dform">
-					<form class="theme-signin" name="loginform" action="" method="post">
-						<ol>
-							<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
-							<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" /></li>
-							<li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" /></li>
-							<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " /></li>
-						</ol>
-					</form>
+					<li>
+					<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
+					<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
+					<li><strong>密  码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
+					<%--<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>--%>
+					<li><button id="loginButton">登 录</button></li>
+					</li>
 				</div>
 			</div>
 
@@ -265,5 +264,33 @@
 	</div>
 </div>
 <!------------------------------- 结束 ----------------------------->
+<script>
+    $(document).ready(function(){
+		function doLogin(){
+
+            var account = $("#inputAccount").val();
+            var password = $("#inputPassword").val();
+            console.log(account+":"+password);
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/agriculture/doLogin",
+                contentType:"application/x-www-form-urlencoded",
+                data:{
+                    log:account,
+                    pwd:password
+                },
+                success:function (data) {
+                    <%
+                    session.setAttribute("status", "sucess");
+                    %>
+                    console.log("${ sessionScope.status}");
+                },error:function () {
+                    alert("登录提交错误");
+                }
+            });
+		}
+		$("#loginButton").click(doLogin);
+    });
+</script>
 </body>
 </html>
