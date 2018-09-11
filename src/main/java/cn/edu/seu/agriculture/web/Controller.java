@@ -78,15 +78,6 @@ public class Controller {
         return reTypeService.toJson(reList).toString();
     }
 
-    @RequestMapping(value = "/datePrice",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
-    @ResponseBody
-    public ModelAndView datePricePage(){
-
-        ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
-        retMap.setViewName("/datePrice.jsp");
-        return retMap;
-    }
-
     //下拉栏获取市场名
     @RequestMapping(value = "/getMarket",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
@@ -197,6 +188,70 @@ public class Controller {
             return "密码错误";
         }else {
             return "登录成功";
+        }
+    }
+
+
+    //监控界面的跳转
+    @RequestMapping(value = "/control",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView controlPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("control");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
+        }
+    }
+
+
+    //对比界面的跳转
+    @RequestMapping(value = "/contrast",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView contrastPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("contrast");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
+        }
+
+    }
+
+    //预测界面的跳转
+    @RequestMapping(value = "/forecast",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView forecastPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("forecast");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
+        }
+    }
+
+
+    //企业地图界面的跳转
+    @RequestMapping(value = "/EnterpriseMap",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView EnterpriseMapPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN ){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("EnterpriseMap");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
         }
     }
 }

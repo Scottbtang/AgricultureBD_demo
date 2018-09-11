@@ -228,11 +228,6 @@
 			<font color="white">全国农业市场信息大数据分析平台 </font>
 		</div>
 		<span style="display: none"> </span>
-		<c:if test="${sessionScope.status != null }">
-			<div class="login_register" style="font-size: 12px">
-				<a href="./logout.do?method=quit">退出系统</a>
-			</div>
-		</c:if>
 			<div class="theme-popover">
 				<div class="theme-poptit">
 					<a href="javascript:;" title="关闭" class="close">×</a>
@@ -243,22 +238,30 @@
 					<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
 					<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
 					<li><strong>密  码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
-					<%--<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>--%>
+						<%--<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>--%>
 					<li><button id="loginButton">登 录</button></li>
 					</li>
 				</div>
 			</div>
 
 
+
 		<div class="nav">
 			<ul>
 				<li><a href="./index.jsp">首页</a></li>
 				<%--<li><a href="./control.jsp" class="nav_aclick">数据监控</a></li>--%>
-				<li><a href="./control.jsp" >数据监控</a></li>
-				<li><a href="./contrast.jsp" >数据查询</a></li>
-				<li><a href="./forecast.jsp">价格预测</a></li>
-				<li><a href="./EnterpriseMap.jsp">企业地图</a></li>
-                <li> <a class="btn btn-primary btn-large theme-login" href="javascript:;">登录系统</a></li>
+				<li><a href="./control" >数据监控</a></li>
+				<li><a href="./contrast" >数据查询</a></li>
+				<li><a href="./forecast">价格预测</a></li>
+				<li><a href="./EnterpriseMap">企业地图</a></li>
+				<c:if test="${sessionScope.status != 'success' }">
+					<%--<div>${sessionScope.status}</div>--%>
+					<li> <a class="btn btn-primary btn-large theme-login" href="javascript:;">登录系统</a></li>
+				</c:if>
+				<c:if test="${sessionScope.status == 'success' }">
+					<%--<div>${sessionScope.status}</div>--%>
+					<li> <a class="btn btn-primary btn-large" href="javascript:;" name="logout">退出登录</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</div>
@@ -266,8 +269,17 @@
 <!------------------------------- 结束 ----------------------------->
 <script>
     $(document).ready(function(){
+        // 点击退出登录按键
+        $("a[name='logout']").click(function(){
+            alert("退出登录成功");
+            <%
+            session.removeAttribute("status");
+            System.out.println("****************"+session.getAttribute("status"));
+            %>
+            window.location.reload();
+        });
+        // 点击登录按键
 		function doLogin(){
-
             var account = $("#inputAccount").val();
             var password = $("#inputPassword").val();
             console.log(account+":"+password);
@@ -280,15 +292,18 @@
                     pwd:password
                 },
                 success:function (data) {
+                    alert(data);
                     <%
-                    session.setAttribute("status", "sucess");
+                    session.setAttribute("status", "success");
                     %>
                     console.log("${ sessionScope.status}");
+                    window.location.reload();
                 },error:function () {
                     alert("登录提交错误");
                 }
             });
 		}
+
 		$("#loginButton").click(doLogin);
     });
 </script>
