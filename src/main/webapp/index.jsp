@@ -116,26 +116,6 @@
 
 <!----------------------------- 导航栏部分----------------------- -->
 <jsp:include page="top.jsp"></jsp:include>
-<%--<div id="type-dialogBox">  </div>--%>
-<%--<div class="top_t">--%>
-	<%--<div class="top_tittle">--%>
-		<%--<div class="logo" style="font-size: 22px">--%>
-			<%--<font color="white">全国农业市场信息大数据分析平台 </font>--%>
-		<%--</div>--%>
-		<%--<span style="display: none"> </span>--%>
-
-		<%--<div class="nav">--%>
-			<%--<ul class ="menus">--%>
-				<%--<li><a href="./index.jsp" class="nav_aclick">首页</a></li>--%>
-				<%--<li><a href="./control.jsp"  >数据监控</a></li>--%>
-				<%--<li><a href="./contrast.jsp" >数据查询</a></li>--%>
-				<%--<li><a href="./forecast.jsp">价格预测</a></li>--%>
-				<%--<li><a href="./EnterpriseMap.jsp">企业地图</a></li>--%>
-
-			<%--</ul>--%>
-		<%--</div>--%>
-	<%--</div>--%>
-<%--</div>--%>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/radialIndicator.min.js"></script>
@@ -276,6 +256,33 @@
             $(this).stop();
             $(this).animate({width: 40}, 400);
         });
+
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/agriculture/monitor",
+            success:function (data) {
+                var mydata = [];
+                console.log(data);
+                var arrayAllData = data.split("\n");
+                console.log(arrayAllData);//272
+                for(var num=0;num<arrayAllData.length-1;num++){
+                    console.log(arrayAllData[num]);
+                    var arrayData=arrayAllData[num].split(",");
+                    var Data={
+                        type:null,
+                        market:null,
+                        price:null,
+                        date:null
+                    };
+                    Data.type=arrayData[0];
+                    Data.market=arrayData[1];
+                    Data.price=arrayData[2];
+                    Data.date=arrayData[3];
+                    mydata.push(Data);
+                }
+                localStorage.setItem('mydata',JSON.stringify(mydata));
+            }
+        })
     });
 </script><%--客服脚本--%>
 </body>

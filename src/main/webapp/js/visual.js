@@ -201,7 +201,7 @@ function draw(data) {
         // 左1文字
         g.insert("text")
             .attr("class", "growth")
-            .attr("x", 0)
+            .attr("x", 200)
             .attr("y", text_y).text(itemLabel);
 
         // 右1文字
