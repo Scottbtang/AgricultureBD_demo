@@ -25,7 +25,7 @@ public class ServiceTest extends BaseTest{
     @Autowired
     private AuthenticateService authenticateService;
 
-    @Test
+//    @Test
     public void logTest(){
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTRVUiLCJleHAiOjE1MzY2Mjk0NTAsInVzZXJJZCI6MTAwMX0.WcAiHMAScknQsaCX2ijznykOZYeBaY52ZaCg-HOrymQ";
         int id = authenticateService.authenticate(token);
@@ -145,4 +145,10 @@ public class ServiceTest extends BaseTest{
         logger.info("\n 进行全国视图测试。。。。");
         System.out.println(countryViewService.getCountryViewPrice("2017-02-16","蔬菜","大白菜"));
     }
+    @Test
+    public void registerTest(){
+        int re = authenticateService.register("hox","hox");
+        logger.info("注册代码: " + re);
+    }
+
 }

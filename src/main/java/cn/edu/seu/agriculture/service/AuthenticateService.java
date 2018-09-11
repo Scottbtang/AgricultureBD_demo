@@ -29,4 +29,15 @@ public interface AuthenticateService {
      * @return 0 注销成功 1 注销失败
      */
     public int logout(HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 登陆
+     * @param username
+     * @param password
+     * @return  注册成功  返回0
+     *          1 用户名已经存在
+     */
+    public int register(String username, String password);
+
+
 }
