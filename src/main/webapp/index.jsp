@@ -116,26 +116,6 @@
 
 <!----------------------------- 导航栏部分----------------------- -->
 <jsp:include page="top.jsp"></jsp:include>
-<%--<div id="type-dialogBox">  </div>--%>
-<%--<div class="top_t">--%>
-	<%--<div class="top_tittle">--%>
-		<%--<div class="logo" style="font-size: 22px">--%>
-			<%--<font color="white">全国农业市场信息大数据分析平台 </font>--%>
-		<%--</div>--%>
-		<%--<span style="display: none"> </span>--%>
-
-		<%--<div class="nav">--%>
-			<%--<ul class ="menus">--%>
-				<%--<li><a href="./index.jsp" class="nav_aclick">首页</a></li>--%>
-				<%--<li><a href="./control.jsp"  >数据监控</a></li>--%>
-				<%--<li><a href="./contrast.jsp" >数据查询</a></li>--%>
-				<%--<li><a href="./forecast.jsp">价格预测</a></li>--%>
-				<%--<li><a href="./EnterpriseMap.jsp">企业地图</a></li>--%>
-
-			<%--</ul>--%>
-		<%--</div>--%>
-	<%--</div>--%>
-<%--</div>--%>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/radialIndicator.min.js"></script>
@@ -145,9 +125,6 @@
 
 <!--  -->
 <script type="text/javascript" src="js/koala.min.1.5.js"></script>
-<script type="text/javascript">
-    <%--var da = ${mapData};--%>
-</script>
 <div class="main">
 	<div class="main_center" >
 		<jsp:include page="foto.jsp"></jsp:include><%--新页面导入--%>

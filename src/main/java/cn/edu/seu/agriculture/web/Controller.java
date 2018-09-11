@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -193,6 +194,21 @@ public class Controller {
         }
     }
 
+    //注册请求
+    @RequestMapping(value = "/doRegister",method = RequestMethod.POST, produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public String doRegister(HttpServletResponse response, String username, String password){
+        logger.info("Controller doing register:"+username+" "+password);
+        int re = authenticateService.register(username,password);
+        if(re == 0){
+            logger.info("注册结果：注册成功");
+            return "注册成功";
+        }else{
+            logger.info("注册结果：用户名已存在");
+            return "用户名已存在";
+        }
+    }
+
     //退出请求
     @RequestMapping(value = "/doLogout",method = RequestMethod.GET, produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
@@ -218,7 +234,7 @@ public class Controller {
             return retMap;
         }else{
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
-            retMap.setViewName("index");
+            retMap.setViewName("register");
             return retMap;
         }
     }
@@ -234,7 +250,7 @@ public class Controller {
             return retMap;
         }else{
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
-            retMap.setViewName("index");
+            retMap.setViewName("register");
             return retMap;
         }
 
@@ -250,7 +266,7 @@ public class Controller {
             return retMap;
         }else{
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
-            retMap.setViewName("index");
+            retMap.setViewName("register");
             return retMap;
         }
     }
@@ -266,7 +282,7 @@ public class Controller {
             return retMap;
         }else{
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
-            retMap.setViewName("index");
+            retMap.setViewName("register");
             return retMap;
         }
     }
