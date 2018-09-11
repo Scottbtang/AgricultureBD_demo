@@ -63,7 +63,7 @@ input[type="search"]::-webkit-search-decoration {
 textarea {
 	overflow:auto;
 	vertical-align:top
-}
+}/*
 ::selection {
 background:#72d0eb;
 color:#fff;
@@ -73,7 +73,7 @@ text-shadow:none
 background:#72d0eb;
 color:#fff;
 text-shadow:none
-}
+}*/
 *[hidden] {
 	display:none
 }

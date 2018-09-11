@@ -21,7 +21,7 @@ button {
     -webkit-transition: 0.25s;
     transition: 0.25s;
 }
-button:hover, button:focus {
+button:hover {
     border-color: var(--hover);
     color: #fff;
 }
@@ -30,8 +30,9 @@ button:hover, button:focus {
     /*  --hover: #66c887;*/
     --hover: #0c0940;
 }
-.slide:hover,
-.slide:focus {
+.slide:hover
+{
     box-shadow: inset 6.5em 0 0 0 var(--hover);
 }
+.slide:focus,
 
