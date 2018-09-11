@@ -149,7 +149,7 @@
     <%--var da = ${mapData};--%>
 </script>
 <div class="main">
-	<div class="main_center">
+	<div class="main_center" >
 		<jsp:include page="foto.jsp"></jsp:include><%--新页面导入--%>
 
 
