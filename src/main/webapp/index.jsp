@@ -254,7 +254,6 @@
             $(this).animate({width: 40}, 400);
         });
 
-
         $.ajax({
             type:"GET",
             url:"http://localhost:8080/agriculture/monitor",

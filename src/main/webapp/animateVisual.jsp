@@ -92,13 +92,36 @@
         <script src="./js/config.js"></script>
         <script src="./js/visual.js"></script>
         <script>
+            var originData=[
+
+
+            ];
            $(document).ready(function () {
                var animate_province=null;
                var animate_market=null;
                var animate_type=null;
                var animate_name=null;
-               var currentInf=0;
-               var data = [];
+               var currentInf=3;
+               var data = [
+                   {
+                       province:'北京',
+                       market :'北京岳各庄批发市场',
+                       type :'蔬菜',
+                       name :'草菇'
+                   },
+                   {
+                       province:'广西',
+                       market :'广西田阳农副产品综合批发市场',
+                       type :'蔬菜',
+                       name :'尖椒'
+                   },
+                   {
+                       province:'河北',
+                       market :'河北秦皇岛海阳农副产品批发市场',
+                       type :'蔬菜',
+                       name :'菜花'
+                   }
+               ];
                var animate_data="name,type,value,date\n";
 
                function animate_getMarket(){
@@ -272,6 +295,8 @@
                }
 
 
+               showTable(data);
+               getAllInf();
                $("#animate_select_1").change(animate_getMarket);
                $("#animate_select_2").change(animate_getType);
                $("#animate_select_3").change(animate_getName);
