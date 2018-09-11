@@ -12,6 +12,7 @@
     <script type="text/javascript" src="./js/echarts.js"></script>
     <title>全国农业市场信息大数据分析平台</title><link rel="shortcut icon" href="images/yn.png"  /></link>
     <script src='http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js'></script>
+        <link href="css/buttonstyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
