@@ -276,6 +276,34 @@
             $(this).stop();
             $(this).animate({width: 40}, 400);
         });
+
+
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:8080/agriculture/monitor",
+            success:function (data) {
+                var mydata = [];
+                console.log(data);
+                var arrayAllData = data.split("\n");
+                console.log(arrayAllData);//272
+                for(var num=0;num<arrayAllData.length-1;num++){
+                    console.log(arrayAllData[num]);
+                    var arrayData=arrayAllData[num].split(",");
+                    var Data={
+                        type:null,
+                        market:null,
+                        price:null,
+                        date:null
+                    };
+                    Data.type=arrayData[0];
+                    Data.market=arrayData[1];
+                    Data.price=arrayData[2];
+                    Data.date=arrayData[3];
+                    mydata.push(Data);
+                }
+                localStorage.setItem('mydata',JSON.stringify(mydata));
+            }
+        })
     });
 </script><%--客服脚本--%>
 </body>

@@ -115,8 +115,10 @@ public class Controller {
     @RequestMapping(value="/monitor",method =RequestMethod.GET,produces = {"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public String Monitor(){
+        logger.info("monitor正在搜集数据************************");
         List<DatePrice> datePrices =  datePriceService.getNewPriceList();
         logger.info(datePrices.toString());
+        logger.info("monitor正在返回数据************************");
         return reTypeService.toCsv(datePrices).toString();
     }
     //获取name,market,price,date
