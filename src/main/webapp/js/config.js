@@ -26,15 +26,14 @@
 
     // 附加信息内容。
     itemLabel : "当前最高价产品",
-    typeLabel : "品类",
     // 榜首项目信息的水平位置 。
-    item_x : 400,
+    item_x : 500,
 
     // 时间点间隔时间。
-    interval_time : 1,
+    interval_time : 3,
 
     // 上方文字水平高度。
-    text_y : -50,
+    text_y : -100,
 
     // 长度小于display_barInfo的bar将不显示barInfo。
     display_barInfo : 150,
@@ -61,13 +60,13 @@
     format : 1,
 
     // 图表左右上下间距。
-    left_margin : 260,
+    left_margin : 190,
     right_margin : 150,
     top_margin : 200,
     bottom_margin : 0,
 
     // 时间标签坐标。
-    dateLabel_x : 600,
+    dateLabel_x : 350,
     dateLabel_y : -50,
     
     // 允许大于平均值的条消失时上浮。
