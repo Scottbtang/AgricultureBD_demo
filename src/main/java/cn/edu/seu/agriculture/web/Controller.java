@@ -62,6 +62,7 @@ public class Controller {
         if(!hasJwt){
             return NO_LOGIN;
         }
+        return LOGIN_SUCCESS;
     }
     @RequestMapping(value = "/datePrice/{province}/{market}/{type}/{name}",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
@@ -75,15 +76,6 @@ public class Controller {
                 province,market,type,name);
 
         return reTypeService.toJson(reList).toString();
-    }
-
-    @RequestMapping(value = "/datePrice",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
-    @ResponseBody
-    public ModelAndView datePricePage(){
-
-        ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
-        retMap.setViewName("/datePrice.jsp");
-        return retMap;
     }
 
     //下拉栏获取市场名
@@ -190,14 +182,90 @@ public class Controller {
         System.out.println("Controller doing login:"+log+" "+pwd);
         int re = authenticateService.login(log ,pwd ,response);
         if(re == NO_USERNAME){
-
+            return "没有此用户";
         }else if(re == PASSWD_ERROR)
         {
-
+            return "密码错误";
         }else {
+            return "登录成功";
+        }
+    }
 
+    //退出请求
+    @RequestMapping(value = "/doLogout",method = RequestMethod.GET, produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public String logout(HttpServletRequest request, HttpServletResponse response,String method){
+//        System.out.println("Controller doing logout");
+        int re = authenticateService.logout(request, response);
+        logger.info("Controller doing logout");
+        if(re == 1){
+            logger.error("failed");
+            return "注销失败";
+        }
+        return "退出登录成功";
+    }
+
+
+    //监控界面的跳转
+    @RequestMapping(value = "/control",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView controlPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("control");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
         }
     }
 
 
+    //对比界面的跳转
+    @RequestMapping(value = "/contrast",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView contrastPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("contrast");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
+        }
+
+    }
+
+    //预测界面的跳转
+    @RequestMapping(value = "/forecast",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView forecastPage(HttpServletRequest request){
+        if (authenticate(request)!=NO_LOGIN){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("forecast");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
+        }
+    }
+
+
+    //企业地图界面的跳转
+    @RequestMapping(value = "/EnterpriseMap",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public ModelAndView EnterpriseMapPage(HttpServletRequest request ,HttpServletResponse response){
+        if (authenticate(request)!=NO_LOGIN ){
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("EnterpriseMap");
+            return retMap;
+        }else{
+            ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
+            retMap.setViewName("index");
+            return retMap;
+        }
+    }
 }

@@ -228,42 +228,94 @@
 			<font color="white">全国农业市场信息大数据分析平台 </font>
 		</div>
 		<span style="display: none"> </span>
-		<c:if test="${user!=null }">
-			<div class="login_register" style="font-size: 12px">
-				<a href="./user.do?method=quit">退出系统</a>
-			</div>
-		</c:if>
 			<div class="theme-popover">
 				<div class="theme-poptit">
 					<a href="javascript:;" title="关闭" class="close">×</a>
 					<h3>登录</h3>
 				</div>
 				<div class="theme-popbod dform">
-					<form class="theme-signin" name="loginform" action="http://localhost:8080/agriculture/doLogin" method="post">
-						<li>
-						<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
-						<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
-						<li><strong>密码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
-						<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>
-						</li>
-					</form>
+					<li>
+					<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
+					<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
+					<li><strong>密  码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
+						<%--<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>--%>
+					<li><button id="loginButton">登 录</button></li>
+					</li>
 				</div>
 			</div>
+
 
 
 		<div class="nav">
 			<ul>
 				<li><a href="./index.jsp">首页</a></li>
 				<%--<li><a href="./control.jsp" class="nav_aclick">数据监控</a></li>--%>
-				<li><a href="./control.jsp" >数据监控</a></li>
-				<li><a href="./contrast.jsp" >数据查询</a></li>
-				<li><a href="./forecast.jsp">价格预测</a></li>
-				<li><a href="./EnterpriseMap.jsp">企业地图</a></li>
-                <li> <a class="btn btn-primary btn-large theme-login" href="javascript:;">登录系统</a></li>
+				<li><a href="./control" >数据监控</a></li>
+				<li><a href="./contrast" >数据查询</a></li>
+				<li><a href="./forecast">价格预测</a></li>
+				<li><a href="./EnterpriseMap">企业地图</a></li>
+
+				<li id="login-btn"> <a class="btn btn-primary btn-large theme-login" href="javascript:;">登录系统</a></li>
+				<li id="logout-btn"> <a class="btn btn-primary btn-large" href="javascript:;" name="logout">退出登录</a></li>
+
 			</ul>
 		</div>
 	</div>
 </div>
 <!------------------------------- 结束 ----------------------------->
+<script>
+    $(document).ready(function(){
+        // 点击退出登录按键
+        $("a[name='logout']").click(function(){
+            localStorage.removeItem('agiculture-status');
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:8080/agriculture/doLogout",
+                contentType:"application/x-www-form-urlencoded",
+				data:{
+                    method:"logout"
+				},
+                success:function (data) {
+                    alert(data);
+                },error:function () {
+                    alert("退出系统错误");
+                }
+            });
+            window.location.href="http://localhost:8080/agriculture/index.jsp";
+        });
+        // 点击登录按键
+		function doLogin(){
+            var account = $("#inputAccount").val();
+            var password = $("#inputPassword").val();
+            console.log(account+":"+password);
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/agriculture/doLogin",
+                contentType:"application/x-www-form-urlencoded",
+                data:{
+                    log:account,
+                    pwd:password
+                },
+                success:function (data) {
+                    alert(data);
+					localStorage.setItem('agiculture-status',data);
+                    window.location.reload();
+                },error:function () {
+                    alert("登录提交错误");
+                }
+            });
+		}
+        $("#loginButton").click(doLogin);
+
+		if(localStorage.getItem('agiculture-status')){
+			$("#login-btn").hide();
+            $("#logout-btn").show();
+        }else{
+            $("#logout-btn").hide();
+            $("#login-btn").show();
+        }
+
+    });
+</script>
 </body>
 </html>

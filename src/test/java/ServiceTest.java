@@ -22,7 +22,18 @@ public class ServiceTest extends BaseTest{
     @Autowired
     private PriceForecastService priceForecastService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private AuthenticateService authenticateService;
 
+    @Test
+    public void logTest(){
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTRVUiLCJleHAiOjE1MzY2Mjk0NTAsInVzZXJJZCI6MTAwMX0.WcAiHMAScknQsaCX2ijznykOZYeBaY52ZaCg-HOrymQ";
+        int id = authenticateService.authenticate(token);
+        logger.info("User id is : " + String.valueOf(id));
+
+        logger.info("Now test to log out");
+//        authenticateService.logout();
+    }
 //    @Test
     public void DatePriceServiceTest1(){
         String province = "山西";
@@ -39,7 +50,7 @@ public class ServiceTest extends BaseTest{
                 province,market,type,name,src,dst);
         logger.info(reList.toString());
     }
-    @Test
+//    @Test
     public void DatePriceServiceTest2(){
         String province = "山西";
         String market = "山西省太原市河西农产品有限公司";
@@ -82,12 +93,12 @@ public class ServiceTest extends BaseTest{
 
     }
 
-    @Test
+//    @Test
     public void CountryViewServiceTest(){
 
     }
 
-    @Test
+//    @Test
     public void  ForecastServiceTest() throws ParseException {
         String province = "山西";
         String market = "山西省太原市河西农产品有限公司";
@@ -101,7 +112,7 @@ public class ServiceTest extends BaseTest{
         logger.info(reList2.toString());
     }
 
-    @Test
+//    @Test
     public  void csvReTypeTest(){
         String province = "山西";
         String market = "山西省太原市河西农产品有限公司";
@@ -115,7 +126,7 @@ public class ServiceTest extends BaseTest{
         System.out.println(reTypeService.toCsv(reList));
     }
 
-    @Test
+//    @Test
     public  void counterTest(){
 //        logger.info("最新数据");
 //        List<DatePrice> datePrices =  datePriceService.getNewPriceList();
@@ -129,7 +140,7 @@ public class ServiceTest extends BaseTest{
         String type = "蔬菜";
         logger.info(datePriceService.getCounter(province,market,type).toString());
     }
-    @Test
+//    @Test
     public  void countryViewTest(){
         logger.info("\n 进行全国视图测试。。。。");
         System.out.println(countryViewService.getCountryViewPrice("2017-02-16","蔬菜","大白菜"));
