@@ -95,6 +95,7 @@ public class AuthenicateServiceImpl implements AuthenticateService {
             if(cookie.getName().equals("jwt")){
                 String token = cookie.getValue();
                 DecodedJWT jwt = JWT.decode(token);
+                logger.info("before token  : " + jwt.getToken());
                 userId = jwt.getClaim("userId").asInt();
             }
         }
@@ -111,6 +112,8 @@ public class AuthenicateServiceImpl implements AuthenticateService {
             return 1;
         }
         Cookie cookie = new Cookie("jwt",token);
+        response.addCookie(cookie);
+        logger.info("after token  : " + token);
         return 0;
     }
 }

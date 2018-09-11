@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <title>蔬菜动态可视化</title>
 	<link rel="stylesheet" href="./css/stylesheet.css">
+    <link href="css/buttonstyle.css" rel="stylesheet" type="text/css">
 </head>
 <script src="./js/jquery-3.3.1.min.js"></script>
 <body>
