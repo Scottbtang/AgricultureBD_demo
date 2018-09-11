@@ -58,26 +58,27 @@
 <body>
 
 <!----------------------------- 导航栏部分----------------------- -->
-<div id="type-dialogBox">  </div>
-<div class="top_t">
-    <div class="top_tittle">
-        <div class="logo" style="font-size: 22px">
-            <font color="white">全国农业市场信息大数据分析平台 </font>
-        </div>
-        <span style="display: none"> </span>
+<jsp:include page="top.jsp"></jsp:include>
+<%--<div id="type-dialogBox">  </div>--%>
+<%--<div class="top_t">--%>
+    <%--<div class="top_tittle">--%>
+        <%--<div class="logo" style="font-size: 22px">--%>
+            <%--<font color="white">全国农业市场信息大数据分析平台 </font>--%>
+        <%--</div>--%>
+        <%--<span style="display: none"> </span>--%>
 
-        <div class="nav">
-            <ul class ="menus">
-                <li><a href="./index.jsp">首页</a></li>
-                <li><a href="./control.jsp" >数据监控</a></li>
-                <li><a href="./contrast.jsp" >数据查询</a></li>
-                <li><a href="./forecast.jsp">价格预测</a></li>
-                <li><a href="./EnterpriseMap.jsp" class="nav_aclick">企业地图</a></li>
+        <%--<div class="nav">--%>
+            <%--<ul class ="menus">--%>
+                <%--<li><a href="./index.jsp">首页</a></li>--%>
+                <%--<li><a href="./control.jsp" >数据监控</a></li>--%>
+                <%--<li><a href="./contrast.jsp" >数据查询</a></li>--%>
+                <%--<li><a href="./forecast.jsp">价格预测</a></li>--%>
+                <%--<li><a href="./EnterpriseMap.jsp" class="nav_aclick">企业地图</a></li>--%>
 
-            </ul>
-        </div>
-    </div>
-</div>
+            <%--</ul>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/radialIndicator.min.js"></script>

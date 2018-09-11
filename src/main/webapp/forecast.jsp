@@ -44,26 +44,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
   <body>
   	<!----------------------------- 导航栏部分----------------------- -->
-	<div class="top_t">
-		<div class="top_tittle">
-			<div class="logo" style="font-size: 22px">
-				<font color="white">全国农业市场信息大数据分析平台 </font>
-			</div>
-			<span style="display: none"> </span>
-			<div class="login_register" style="font-size: 12px">
-				<a href="./user.do?method=quit">退出系统</a>
-			</div>
-			<div class="nav">
-				<ul>
-					<li><a href="./index.jsp">首页</a></li>
-					<li><a href="./control.jsp" >数据监控</a></li>
-					<li><a href="./contrast.jsp" >数据查询</a></li>
-					<li><a href="./forecast.jsp" class="nav_aclick">价格预测</a></li>
-					<li><a href="./EnterpriseMap.jsp">企业地图</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<jsp:include page="top.jsp"></jsp:include>
+	<%--<div class="top_t">--%>
+		<%--<div class="top_tittle">--%>
+			<%--<div class="logo" style="font-size: 22px">--%>
+				<%--<font color="white">全国农业市场信息大数据分析平台 </font>--%>
+			<%--</div>--%>
+			<%--<span style="display: none"> </span>--%>
+			<%--<div class="login_register" style="font-size: 12px">--%>
+				<%--<a href="./user.do?method=quit">退出系统</a>--%>
+			<%--</div>--%>
+			<%--<div class="nav">--%>
+				<%--<ul>--%>
+					<%--<li><a href="./index.jsp">首页</a></li>--%>
+					<%--<li><a href="./control.jsp" >数据监控</a></li>--%>
+					<%--<li><a href="./contrast.jsp" >数据查询</a></li>--%>
+					<%--<li><a href="./forecast.jsp" class="nav_aclick">价格预测</a></li>--%>
+					<%--<li><a href="./EnterpriseMap.jsp">企业地图</a></li>--%>
+				<%--</ul>--%>
+			<%--</div>--%>
+		<%--</div>--%>
+	<%--</div>--%>
 	<!------------------------------- 结束 ----------------------------->
   	<div class="main">
 		<div class="main_center">

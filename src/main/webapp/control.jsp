@@ -93,34 +93,7 @@
 </head>
 <body>
 <!----------------------------- 导航栏部分----------------------- -->
-<div id="type-dialogBox"></div>
-<div class="top_t">
-	<div class="top_tittle">
-		<div class="logo" style="font-size: 22px">
-			<font color="white">全国农业市场信息大数据分析平台 </font>
-		</div>
-		<span style="display: none"> </span>
-		<c:if test="${user!=null }">
-			<div class="login_register" style="font-size: 12px">
-				<a href="./user.do?method=quit">退出系统</a>
-			</div>
-		</c:if>
-		<c:if test="${user==null }">
-			<div class="login_register" style="font-size: 12px">
-				<a href="javascript:" onclick="loginUser()">登录系统</a>
-			</div>
-		</c:if>
-		<div class="nav">
-			<ul>
-				<li><a href="./index.jsp">首页</a></li>
-				<li><a href="./control.jsp" class="nav_aclick">数据监控</a></li>
-				<li><a href="./contrast.jsp" >数据查询</a></li>
-				<li><a href="./forecast.jsp">价格预测</a></li>
-				<li><a href="./EnterpriseMap.jsp">企业地图</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
+<jsp:include page="top.jsp"></jsp:include>
 <!------------------------------- 结束 ----------------------------->
 <div class="main">
 	<div class="main_center">
@@ -661,12 +634,9 @@
                     }
                     console.log(marketNameAndCounter);
 
-
                     /*---------------------初始化----------------------------*/
                     var myChart_pie = echarts.init(document.getElementById('pie'));
-
                     /*---------------------数据----------------------------*/
-
                     //初始化数据，
                     var echartData = [{
                         value: marketAllNumber,//时间
@@ -831,66 +801,6 @@
                     myChart_pie.setOption(option1);
 
                     var myChart_ndgr = echarts.init(document.getElementById('ndgr'));
-                    // option2 = {
-                    //     backgroundColor: '#2c343c',
-                    //
-                    //     title: {
-                    //         text: '品种占比',
-                    //         left: 'center',
-                    //         top: 10,
-                    //         textStyle: {
-                    //             color: '#ccc'
-                    //         }
-                    //     },
-                    //
-                    //     tooltip : {
-                    //         trigger: 'item',
-                    //         formatter: "{a} <br/>{b} : {c} ({d}%)"
-                    //     },
-                    //
-                    //     visualMap: {
-                    //         show: false,
-                    //         min: 80,
-                    //         max: 600,
-                    //         inRange: {
-                    //             colorLightness: [0, 1]
-                    //         }
-                    //     },
-                    //     series : [
-                    //         {
-                    //             name:'所占比例',
-                    //             type:'pie',
-                    //             radius : '55%',
-                    //             center: ['50%', '50%'],
-                    //             data:marketNameAndCounter.sort(function (a, b) { return a.value - b.value}),
-                    //             roseType: 'angle',
-                    //             label: {
-                    //                 normal: {
-                    //                     textStyle: {
-                    //                         color: 'white'
-                    //                     }
-                    //                 }
-                    //             },
-                    //             labelLine: {
-                    //                 normal: {
-                    //                     lineStyle: {
-                    //                         color: 'rgba(255, 255, 255, 0.3)'
-                    //                     },
-                    //                     smooth: 0.2,
-                    //                     length: 10,
-                    //                     length2: 20
-                    //                 }
-                    //             },
-                    //             itemStyle: {
-                    //                 normal: {
-                    //                     color: '#ffdcff',
-                    //                     shadowBlur: 700,
-                    //                     shadowColor: 'pink'
-                    //                 }
-                    //             }
-                    //         }
-                    //     ]
-                    // };
                     var count_num = 0;
                     for (var m  in marketNameAndCounter){
                         count_num = count_num +marketNameAndCounter[m]['value']
@@ -930,12 +840,9 @@
                         ]
                     };
                     myChart_ndgr.setOption(option2);
-
                 }
             });
         }
-
-
         $("#province").change(getMarket);
         $("#market").change(getType);
         $("#queryButton").click(getData);
