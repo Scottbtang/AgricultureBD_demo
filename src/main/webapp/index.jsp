@@ -15,11 +15,9 @@
 	<meta http-equiv="description" content="This is my page">
 	<link rel="shortcut icon" href="images/yn.png"  />
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
-	<link href="css/index.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/nongye_price.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.dialogbox.css" />
-	<link rel="stylesheet" type="text/css" href="css/datouwang.css" />
 	<link rel="stylesheet" type="text/css" href="css/buttonstyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/textStyle.css">
 	<style type="text/css">
 		.dialog_p{
 			width:100%;
@@ -57,8 +55,64 @@
 		}
 
 	</style>
+<style>
+	.a1 {
+		height: 350px;
+		width: 700px;
+		margin-top: 20px;
+		margin-right: 20px;
+        margin-bottom: 30px;
+        margin-left: 10px;
+		float:left;
+	}
+	.a2{
+        height: 200px;
+		width: 420px;
+		float: left;
+        margin-top: 100px;
+        margin-right: 30px;
+        margin-bottom: 100px;
+        margin-left: 20px;
+	}
+	.a3{
+		height: 200px;
+		width: 420px;
+		float: left;
+        margin-top: 100px;
+        margin-right: 20px;
+        margin-bottom: 100px;
+        margin-left: 30px;
+	}
+	.a4{
+        height: 350px;
+        width: 700px;
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-bottom: 30px;
+        margin-left: 20px;
+        float:left;
+	}
+    .a5{
+        height: 350px;
+        width: 700px;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 30px;
+        margin-left: 10px;
+        float:left;
+    }
+    .a6{
+        height: 200px;
+        width: 420px;
+        float: left;
+        margin-top: 100px;
+        margin-right: 30px;
+        margin-bottom: 100px;
+        margin-left: 20px;
+    }
+</style>
 </head>
-<body>
+<body >
 
 <!----------------------------- 导航栏部分----------------------- -->
 <div id="type-dialogBox">  </div>
@@ -87,6 +141,7 @@
 <script type="text/javascript" src="js/jquery.dialogBox.js"></script>
 <script type="text/javascript" src="js/echarts.js"></script>
 <script type="text/javascript" src="js/animalbuttoncolor.js"></script>
+
 <!--  -->
 <script type="text/javascript" src="js/koala.min.1.5.js"></script>
 <script type="text/javascript">
@@ -94,15 +149,97 @@
 </script>
 <div class="main">
 
-	<div class="main_center">
+	<div class="main_center" >
 		<jsp:include page="foto.jsp"></jsp:include><%--新页面导入--%>
-		<div class="price_5">
-			<div class="content">
-				<div id="bMap" style="width: 1200px;height:626px;"></div>
-			</div>
-		</div>
-		<jsp:include page="bottom.jsp"></jsp:include>
+
+
+				<div id="bMap" style="width: 1200px;height:1200px;">
+					<div class ="a1" >
+                        <img src="./images/JK.jpg" style="border-radius:20px"  height="350" width="650"/>
+				</div>
+					<div class ="a2"  style="text-align:center;">
+                        <div class="container">
+                            <div class="coolText">
+                                <div class="left">
+                                    <div class="content">
+                                        <h1 style="font-size: 20px">数据监控</h1>
+                                        <p style="font-size: 15px">监控爬取数量</p>
+                                        <p style="font-size: 15px">查询历史信息</p>
+                                        <p style="font-size: 15px">针对市场详细查询</p>
+                                        <p style="font-size: 15px">获取更多的数据，掌握市场快人一步</p>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <div class="content">
+                                        <h1 style="font-size: 20px">数据监控</h1>
+                                        <p style="font-size: 15px">监控爬取数量</p>
+                                        <p style="font-size: 15px">查询历史信息</p>
+                                        <p style="font-size: 15px">针对市场详细查询</p>
+                                        <p style="font-size: 15px">获取更多的数据，掌握市场快人一步</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="a3" style="text-align:center;">
+                        <div class="container">
+                            <div class="coolText">
+                                <div class="left">
+                                    <div class="content">
+                                        <h1 style="font-size: 20px">数据查询</h1>
+                                        <p style="font-size: 15px">获取市场历史数据</p>
+                                        <p style="font-size: 15px">区域行情对比</p>
+                                        <p style="font-size: 15px">动态对比详细数据</p>
+                                        <p style="font-size: 15px">静态参照历史数据</p>
+                                        <p style="font-size: 15px">彻底掌握市场行情，全面了解发展趋势</p>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <div class="content">
+                                        <h1 style="font-size: 20px">数据查询</h1>
+                                        <p style="font-size: 15px">获取市场历史数据</p>
+                                        <p style="font-size: 15px">区域行情对比</p>
+                                        <p style="font-size: 15px">动态对比详细数据</p>
+                                        <p style="font-size: 15px">静态参照历史数据</p>
+                                        <p style="font-size: 15px">彻底掌握市场行情，全面了解发展趋势</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="a4">
+                        <img src="./images/CX.jpg" style="border-radius:20px" height="350" width="650"/>
+					</div>
+                    <div class="a5">
+                        <img src="./images/YC.jpg" style="border-radius:20px" height="350" width="650"/>
+                    </div>
+                    <div class="a6" style="text-align:center;">
+                        <div class="container">
+                            <div class="coolText">
+                                <div class="left">
+                                    <div class="content">
+                                        <h1 style="font-size: 20px">价格预测</h1>
+                                        <p style="font-size: 15px">采用指数移动平均加权算法，权威预测未来行情</p>
+                                        <p style="font-size: 15px">预测价格，掌握未来，迈向成功</p>
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <div class="content">
+                                        <h1 style="font-size: 20px">价格预测</h1>
+                                        <p style="font-size: 15px">采用指数移动平均加权算法，权威预测未来行情</p>
+                                        <p style="font-size: 15px">预测价格，掌握未来，迈向财富</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 	</div>
+		<jsp:include page="bottom.jsp"></jsp:include>
 </div>
 <%--客服--%>
 <style type="text/css">
@@ -127,6 +264,7 @@
 	</dl>
 </div><%--客服链接--%>
 
+
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -143,4 +281,7 @@
 </script><%--客服脚本--%>
 
 </body>
+
+<script type="text/javascript" src="js/textWord1.js"></script>
+
 </html>

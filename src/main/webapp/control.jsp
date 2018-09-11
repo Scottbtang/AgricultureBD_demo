@@ -15,7 +15,6 @@
 	<meta http-equiv="description" content="This is my page">
 	<link rel="shortcut icon" href="images/yn.png" />
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
-	<link href="css/index.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/nongye_price.css" />
 	<link href="css/tab.css" rel="stylesheet" type="text/css">
 
@@ -299,13 +298,15 @@
 
                     var highlight = '#03b7c9';
 
+                    var myDate=new Date();
+                    var now_date=myDate.getDate();
                     var demoData = [
                         { name: '市场总数(万)', value: arrayAllData[0]/10000, unit: '', pos: ['16.6%', '25%'], range: [0, 1] },
                         { name: '品类总数', value: arrayAllData[1], unit: '', pos: ['49.8%', '25%'], range: [0, 100] },
                         { name: '品种总数(万)', value: arrayAllData[2]/10000, pos: ['83%', '25%'], range: [0, 1], },
                         { name: '总抓取量(百万)', value: arrayAllData[3]/1000000, unit: '', pos: ['16.6%', '75%'], range: [0, 100] },
                         { name: '当天抓取量(万)', value: arrayAllData[4]/10000, unit: '', pos: ['49.8%', '75%'], range: [0, 10] },
-                        { name: '抓取时间', value: 5, unit: '号', pos: ['83%', '75%'], range: [1, 31] }
+                        { name: '抓取时间', value: now_date, unit: '号', pos: ['83%', '75%'], range: [1, 31] }
                     ];
                     AllCrawNumber=arrayAllData[3];
 

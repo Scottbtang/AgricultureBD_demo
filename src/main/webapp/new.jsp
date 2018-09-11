@@ -19,8 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="shortcut icon" href="images/yn.png" />
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
 	<link rel="stylesheet" type="text/css" href="css/nongye_price.css" /> 
-	<link href="css/sroll.css" rel="stylesheet" type="text/css">
-	
+
 
 	<style type="text/css">  
   	

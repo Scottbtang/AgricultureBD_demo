@@ -279,7 +279,6 @@
                $("#cleanButton").click(delAllInf);
            })
         </script>
-        <link rel="stylesheet" href="./css/stylesheet.css">
     </center>
 
 
