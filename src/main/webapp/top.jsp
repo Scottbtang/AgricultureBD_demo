@@ -254,14 +254,10 @@
 				<li><a href="./contrast" >数据查询</a></li>
 				<li><a href="./forecast">价格预测</a></li>
 				<li><a href="./EnterpriseMap">企业地图</a></li>
-				<c:if test="${sessionScope.status != 'success' }">
-					<%--<div>${sessionScope.status}</div>--%>
-					<li> <a class="btn btn-primary btn-large theme-login" href="javascript:;">登录系统</a></li>
-				</c:if>
-				<c:if test="${sessionScope.status == 'success' }">
-					<%--<div>${sessionScope.status}</div>--%>
-					<li> <a class="btn btn-primary btn-large" href="javascript:;" name="logout">退出登录</a></li>
-				</c:if>
+
+				<li id="login-btn"> <a class="btn btn-primary btn-large theme-login" href="javascript:;">登录系统</a></li>
+				<li id="logout-btn"> <a class="btn btn-primary btn-large" href="javascript:;" name="logout">退出登录</a></li>
+
 			</ul>
 		</div>
 	</div>
@@ -272,10 +268,7 @@
         // 点击退出登录按键
         $("a[name='logout']").click(function(){
             alert("退出登录成功");
-            <%
-            session.removeAttribute("status");
-            System.out.println("****************"+session.getAttribute("status"));
-            %>
+            localStorage.removeItem('agiculture-status');
             window.location.reload();
         });
         // 点击登录按键
@@ -293,18 +286,23 @@
                 },
                 success:function (data) {
                     alert(data);
-                    <%
-                    session.setAttribute("status", "success");
-                    %>
-                    console.log("${ sessionScope.status}");
+					localStorage.setItem('agiculture-status',data);
                     window.location.reload();
                 },error:function () {
                     alert("登录提交错误");
                 }
             });
 		}
+        $("#loginButton").click(doLogin);
 
-		$("#loginButton").click(doLogin);
+		if(localStorage.getItem('agiculture-status')){
+			$("#login-btn").hide();
+            $("#logout-btn").show();
+        }else{
+            $("#logout-btn").hide();
+            $("#login-btn").show();
+        }
+
     });
 </script>
 </body>
