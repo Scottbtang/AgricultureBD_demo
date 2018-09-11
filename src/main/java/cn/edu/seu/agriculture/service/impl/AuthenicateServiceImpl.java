@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
@@ -84,5 +85,32 @@ public class AuthenicateServiceImpl implements AuthenticateService {
             return userId;
         else
             return -1;
+    }
+
+    @Override
+    public int logout(HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] cookies = request.getCookies();
+        int userId = 0;
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("jwt")){
+                String token = cookie.getValue();
+                DecodedJWT jwt = JWT.decode(token);
+                userId = jwt.getClaim("userId").asInt();
+            }
+        }
+        // Get a new token
+        String token = null;
+        try {
+            Date expaireTime = new Date(System.currentTimeMillis());   // 直接过期来达到注销的目
+            token = JWT.create()
+                    .withIssuer("SEU")
+                    .withClaim("userId",userId)
+                    .withExpiresAt(expaireTime)
+                    .sign(ALGORITHM);
+        } catch (JWTCreationException exception){
+            return 1;
+        }
+        Cookie cookie = new Cookie("jwt",token);
+        return 0;
     }
 }
