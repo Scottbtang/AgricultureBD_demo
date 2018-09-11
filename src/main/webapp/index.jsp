@@ -125,9 +125,6 @@
 
 <!--  -->
 <script type="text/javascript" src="js/koala.min.1.5.js"></script>
-<script type="text/javascript">
-    <%--var da = ${mapData};--%>
-</script>
 <div class="main">
 	<div class="main_center" >
 		<jsp:include page="foto.jsp"></jsp:include><%--新页面导入--%>

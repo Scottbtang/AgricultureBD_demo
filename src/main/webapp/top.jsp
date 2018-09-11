@@ -234,13 +234,29 @@
 					<h3>登录</h3>
 				</div>
 				<div class="theme-popbod dform">
-					<li>
-					<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
-					<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
-					<li><strong>密  码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
-						<%--<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>--%>
-					<li><button id="loginButton">登 录</button></li>
-					</li>
+					<%--<li>--%>
+					<%--<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>--%>
+					<%--<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>--%>
+					<%--<li><strong>密  码：&nbsp</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>--%>
+						<%--&lt;%&ndash;<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>&ndash;%&gt;--%>
+					<%--<li><button id="loginButton">登 录</button>--%>
+						<%--<button id="registerButton">注 册</button></li>--%>
+					<%--</li>--%>
+							<table border="0" align="center">
+								<h3>欢迎登录全国农业市场信息大数据分析平台</h3>
+								<tr>
+									<th><strong>用户名：</strong></th>
+									<th><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></th>
+								</tr>
+								<tr>
+									<td><strong>密  码：&nbsp</strong></td>
+									<td><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></td>
+								</tr>
+								<tr>
+									<td><button id="loginButton">登 录</button></td>
+									<td><button id="registerButton">注 册</button></td>
+								</tr>
+							</table>
 				</div>
 			</div>
 
@@ -306,6 +322,11 @@
             });
 		}
         $("#loginButton").click(doLogin);
+
+		function doRegister(){
+            window.location.href="http://localhost:8080/agriculture/register.jsp";
+		}
+        $("#registerButton").click(doRegister);
 
 		if(localStorage.getItem('agiculture-status')){
 			$("#login-btn").hide();

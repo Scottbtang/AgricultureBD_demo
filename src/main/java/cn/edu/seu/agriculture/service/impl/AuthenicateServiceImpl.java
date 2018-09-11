@@ -1,6 +1,7 @@
 package cn.edu.seu.agriculture.service.impl;
 
 import cn.edu.seu.agriculture.dao.UserPasswdMapper;
+import cn.edu.seu.agriculture.entity.UserInfo;
 import cn.edu.seu.agriculture.entity.UserPasswd;
 import cn.edu.seu.agriculture.entity.UserPasswdExample;
 import cn.edu.seu.agriculture.service.AuthenticateService;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class AuthenicateServiceImpl implements AuthenticateService {
@@ -70,7 +72,14 @@ public class AuthenicateServiceImpl implements AuthenticateService {
     }
 
     @Override
-    public int authenticate(String cookieValue) {
+    public int authenticate(HttpServletRequest request) {
+        String cookieValue = new String();
+        Cookie[] cookies = request.getCookies();
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("jwt")){
+                cookieValue = cookie.getValue();
+            }
+        }
         DecodedJWT jwt = null;
         try {
             JWTVerifier verifier = JWT.require(ALGORITHM)
@@ -114,6 +123,26 @@ public class AuthenicateServiceImpl implements AuthenticateService {
         Cookie cookie = new Cookie("jwt",token);
         response.addCookie(cookie);
         logger.info("after token  : " + token);
+        return 0;
+    }
+
+    @Override
+    public int register(String username, String password) {
+        UserPasswd userPasswd = new UserPasswd();
+        userPasswd.setUsername(username);
+        userPasswd.setPassword(password);
+
+        UserPasswdExample example = new UserPasswdExample();
+        example.setOrderByClause("userId DESC");
+        List<UserPasswd> query =  userPasswdMapper.selectByExample(example);
+        int newId = query.get(0).getUserid() + 2;
+        userPasswd.setUserid(newId);
+        try{
+            userPasswdMapper.insert(userPasswd);
+        }catch (Exception e)
+        {
+            return 1;
+        }
         return 0;
     }
 }
