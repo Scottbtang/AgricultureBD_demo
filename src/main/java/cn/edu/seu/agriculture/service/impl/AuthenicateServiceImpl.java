@@ -72,7 +72,14 @@ public class AuthenicateServiceImpl implements AuthenticateService {
     }
 
     @Override
-    public int authenticate(String cookieValue) {
+    public int authenticate(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        String cookieValue = null;
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("jwt")){
+                cookieValue = cookie.getValue();
+            }
+        }
         DecodedJWT jwt = null;
         try {
             JWTVerifier verifier = JWT.require(ALGORITHM)

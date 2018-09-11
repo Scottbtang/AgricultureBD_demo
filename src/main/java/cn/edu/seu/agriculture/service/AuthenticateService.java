@@ -18,10 +18,10 @@ public interface AuthenticateService {
 
     /**
      * 先验证， 验证通过返回用户id， 验证失败返回-1
-     * @param cookieValue  用于认证的cookie
+     * @param request  用于认证的cookie
      * @return
      */
-    public int authenticate(String cookieValue);
+    public int authenticate(HttpServletRequest request);
 
     /**
      * 更新cookie， 使之立即失效来达到注销的目的

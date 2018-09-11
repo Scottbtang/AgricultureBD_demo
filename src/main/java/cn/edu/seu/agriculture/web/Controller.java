@@ -49,22 +49,7 @@ public class Controller {
     private static final int LOGIN_SUCCESS = 0;
     private static final int NO_USERNAME = 1;
     private static final int PASSWD_ERROR = 2;
-    private int authenticate(HttpServletRequest request){
-        Cookie[] cookies =  request.getCookies();
-        boolean hasJwt = false;
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("jwt")){
-                String token = cookie.getValue();
-                int re = authenticateService.authenticate(token);
-                hasJwt = true;
-                return  re;
-            }
-        }
-        if(!hasJwt){
-            return NO_LOGIN;
-        }
-        return LOGIN_SUCCESS;
-    }
+
     @RequestMapping(value = "/datePrice/{province}/{market}/{type}/{name}",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public String datePriceHandler(@PathVariable("province")String province,
@@ -228,7 +213,7 @@ public class Controller {
     @RequestMapping(value = "/control",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public ModelAndView controlPage(HttpServletRequest request){
-        if (authenticate(request)!=NO_LOGIN){
+        if (authenticateService.authenticate(request)!=NO_LOGIN){
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
             retMap.setViewName("control");
             return retMap;
@@ -244,7 +229,7 @@ public class Controller {
     @RequestMapping(value = "/contrast",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public ModelAndView contrastPage(HttpServletRequest request){
-        if (authenticate(request)!=NO_LOGIN){
+        if (authenticateService.authenticate(request)!=NO_LOGIN){
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
             retMap.setViewName("contrast");
             return retMap;
@@ -260,7 +245,7 @@ public class Controller {
     @RequestMapping(value = "/forecast",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public ModelAndView forecastPage(HttpServletRequest request){
-        if (authenticate(request)!=NO_LOGIN){
+        if (authenticateService.authenticate(request)!=NO_LOGIN){
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
             retMap.setViewName("forecast");
             return retMap;
@@ -276,7 +261,7 @@ public class Controller {
     @RequestMapping(value = "/EnterpriseMap",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public ModelAndView EnterpriseMapPage(HttpServletRequest request ,HttpServletResponse response){
-        if (authenticate(request)!=NO_LOGIN ){
+        if (authenticateService.authenticate(request)!=NO_LOGIN ){
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
             retMap.setViewName("EnterpriseMap");
             return retMap;
