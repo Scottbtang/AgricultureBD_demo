@@ -32,7 +32,7 @@ public class ServiceTest extends BaseTest{
         logger.info("User id is : " + String.valueOf(id));
 
         logger.info("Now test to log out");
-        authenticateService.logout();
+//        authenticateService.logout();
     }
 //    @Test
     public void DatePriceServiceTest1(){

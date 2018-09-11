@@ -191,6 +191,20 @@ public class Controller {
         }
     }
 
+    //退出请求
+    @RequestMapping(value = "/doLogout",method = RequestMethod.GET, produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public String logout(HttpServletRequest request, HttpServletResponse response,String method){
+//        System.out.println("Controller doing logout");
+        int re = authenticateService.logout(request, response);
+        logger.info("Controller doing logout");
+        if(re == 1){
+            logger.error("failed");
+            return "注销失败";
+        }
+        return "退出登录成功";
+    }
+
 
     //监控界面的跳转
     @RequestMapping(value = "/control",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
@@ -243,7 +257,7 @@ public class Controller {
     //企业地图界面的跳转
     @RequestMapping(value = "/EnterpriseMap",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
-    public ModelAndView EnterpriseMapPage(HttpServletRequest request){
+    public ModelAndView EnterpriseMapPage(HttpServletRequest request ,HttpServletResponse response){
         if (authenticate(request)!=NO_LOGIN ){
             ModelAndView retMap = new ModelAndView();  //返回新的ModelAndView
             retMap.setViewName("EnterpriseMap");

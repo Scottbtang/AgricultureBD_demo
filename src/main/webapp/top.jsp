@@ -267,9 +267,21 @@
     $(document).ready(function(){
         // 点击退出登录按键
         $("a[name='logout']").click(function(){
-            alert("退出登录成功");
             localStorage.removeItem('agiculture-status');
-            window.location.reload();
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:8080/agriculture/doLogout",
+                contentType:"application/x-www-form-urlencoded",
+				data:{
+                    method:"logout"
+				},
+                success:function (data) {
+                    alert(data);
+                },error:function () {
+                    alert("退出系统错误");
+                }
+            });
+            window.location.href="http://localhost:8080/agriculture/index.jsp";
         });
         // 点击登录按键
 		function doLogin(){
