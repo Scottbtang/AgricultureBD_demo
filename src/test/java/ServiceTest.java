@@ -28,8 +28,8 @@ public class ServiceTest extends BaseTest{
 //    @Test
     public void logTest(){
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTRVUiLCJleHAiOjE1MzY2Mjk0NTAsInVzZXJJZCI6MTAwMX0.WcAiHMAScknQsaCX2ijznykOZYeBaY52ZaCg-HOrymQ";
-        int id = authenticateService.authenticate(token);
-        logger.info("User id is : " + String.valueOf(id));
+//        int id = authenticateService.authenticate(token);
+//        logger.info("User id is : " + String.valueOf(id));
 
         logger.info("Now test to log out");
 //        authenticateService.logout();

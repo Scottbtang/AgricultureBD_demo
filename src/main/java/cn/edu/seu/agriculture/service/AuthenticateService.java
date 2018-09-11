@@ -21,7 +21,7 @@ public interface AuthenticateService {
      * @param cookieValue  用于认证的cookie
      * @return
      */
-    public int authenticate(String cookieValue);
+    public int authenticate(HttpServletRequest request);
 
     /**
      * 更新cookie， 使之立即失效来达到注销的目的
