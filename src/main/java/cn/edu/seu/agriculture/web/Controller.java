@@ -62,6 +62,7 @@ public class Controller {
         if(!hasJwt){
             return NO_LOGIN;
         }
+        return LOGIN_SUCCESS;
     }
     @RequestMapping(value = "/datePrice/{province}/{market}/{type}/{name}",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
@@ -190,14 +191,12 @@ public class Controller {
         System.out.println("Controller doing login:"+log+" "+pwd);
         int re = authenticateService.login(log ,pwd ,response);
         if(re == NO_USERNAME){
-
+            return "没有此用户";
         }else if(re == PASSWD_ERROR)
         {
-
+            return "密码错误";
         }else {
-
+            return "登录成功";
         }
     }
-
-
 }
