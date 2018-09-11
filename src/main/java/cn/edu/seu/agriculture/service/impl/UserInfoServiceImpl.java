@@ -22,4 +22,18 @@ public class UserInfoServiceImpl implements UserInfoService {
         reList.add(userInfo.getName());
         return reList;
     }
+
+    @Override
+    public int insertLiked(int userId, String province, String market, String type, String name) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserid(userId);
+        userInfo.setProvince(province);
+        userInfo.setMarket(market);
+        userInfo.setType(type);
+        userInfo.setName(name);
+        UserInfoExample example = new UserInfoExample();
+        example.createCriteria().andUseridEqualTo(userId);
+        userInfoMapper.updateByExample(userInfo,example);
+        return 0;
+    }
 }
