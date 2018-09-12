@@ -49,7 +49,7 @@
         ],
         yAxis : [
             {
-                type : 'value'
+                type : 'value',name:'/元'
             }
         ],
         series : [
