@@ -63,7 +63,8 @@
 </script>
 <body>
 <jsp:include page="top.jsp"></jsp:include>
-    <div class="main_center1" style="width: 1180px;
+    <div class="main_center78"
+         style="width: 1180px;
          height:700px;
          margin: 0px auto;
          position: relative;">
