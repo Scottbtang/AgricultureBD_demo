@@ -53,7 +53,7 @@ a:hover {
 .clearfix, .central, .widget ul, .paging, .pagenav, .base-tit {+height:1%;
 }
 body, button, input, select, textarea, code {
-	font-size:12px;
+	font-size:17px;
 	font-family:microsoft yahei;
 	color: #444;
 }

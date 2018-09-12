@@ -12,7 +12,7 @@
     <script type="text/javascript" src='js/jquery-3.3.1.min.js'></script>
     <link rel="stylesheet" href="css/register.css" type="text/css" media="screen"/>
 
-    <script type="text/javascript" src="js/register.js"></script>
+
     <style>
         span.reference {
             position:fixed;
@@ -62,17 +62,19 @@
 
 </script>
 <body>
+<jsp:include page="top.jsp"></jsp:include>
     <div class="main_center1" style="width: 1180px;
          height:700px;
          margin: 0px auto;
          position: relative;">
-        <jsp:include page="top.jsp"></jsp:include>
         <div id="content">
+            <h1>&nbsp;</h1>
+
             <div id="wrapper">
                 <div id="steps">
                     <form id="registerForm" name="formElem" action="http://localhost:8080/agriculture/doRegister" method="post" onsubmit="return sub();">
                         <fieldset class="step">
-                            <legend>用户信息</legend>
+                            <legend>注册</legend>
                             <p>
                                 <label for="username">用户名</label>
                                 <input id="username" name="username" />
@@ -80,6 +82,11 @@
                             <p>
                                 <label for="password">密码</label>
                                 <input id="password" name="password" type="password" AUTOCOMPLETE=OFF />
+
+                            </p>
+                            <p>
+                                <label for="password">确认密码</label>
+                                <input id="realPassword" name="password" type="password" AUTOCOMPLETE=OFF />
                             </p>
                         </fieldset>
                         <fieldset class="step">
@@ -92,9 +99,9 @@
                     </form>
                 </div>
                 <div id="navigation" style="display:none;">
-                    <ul>
+                    <ul >
                         <li class="selected"> <a href="#">用户信息</a> </li>
-                        <li> <a href="#">确认</a> </li>
+                        <li > <a href="#">确认</a> </li>
                     </ul>
                 </div>
             </div>
