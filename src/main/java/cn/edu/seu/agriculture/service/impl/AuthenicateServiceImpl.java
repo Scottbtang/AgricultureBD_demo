@@ -74,7 +74,7 @@ public class AuthenicateServiceImpl implements AuthenticateService {
     @Override
     public int authenticate(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
-        String cookieValue = null;
+        String cookieValue = " ";
 
         for(Cookie cookie : cookies){
             if(cookie.getName().equals("jwt")){
@@ -88,6 +88,7 @@ public class AuthenicateServiceImpl implements AuthenticateService {
                     .build(); //Reusable verifier instance
             jwt = verifier.verify(cookieValue);
         } catch (JWTVerificationException | IllegalArgumentException exception){
+            exception.printStackTrace();
             return -1;
         }
         int userId = jwt.getClaim("userId").asInt();

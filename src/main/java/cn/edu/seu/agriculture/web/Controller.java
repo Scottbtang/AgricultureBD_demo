@@ -6,6 +6,7 @@ import cn.edu.seu.agriculture.service.DatePriceService;
 import cn.edu.seu.agriculture.service.ReTypeService;
 import cn.edu.seu.agriculture.service.TocSearchService;
 import cn.edu.seu.agriculture.service.CountryViewService;
+import cn.edu.seu.agriculture.service.AuthenticateService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,8 @@ public class Controller {
     private PriceForecastService priceForecastService;
     @Autowired
     private AuthenticateService authenticateService;
+    @Autowired
+    private UserInfoService userInfoService;
 
 
     /**
@@ -52,12 +55,19 @@ public class Controller {
 
     @RequestMapping(value = "/datePrice/{province}/{market}/{type}/{name}",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
-    public String datePriceHandler(@PathVariable("province")String province,
+    public String datePriceHandler(HttpServletRequest request ,
+                                       @PathVariable("province")String province,
                                        @PathVariable("market")String market,
                                        @PathVariable("type")String type,
-                                       @PathVariable("name")String name ,
-                                        HttpServletRequest request) {
-
+                                       @PathVariable("name")String name
+                                        ) {
+        int id = authenticateService.authenticate(request);
+        if (id != -1){
+            logger.info("正在记录用户价格查询操作，用户id:"+String.valueOf(id)+province+market+type+name);
+            userInfoService.insertLiked(id,province,market,type,name);
+        }else{
+            logger.info("正在记录用户价格查询操作，用户cookie验证失败");
+        }
         List<Map<String,Object>> reList = datePriceService.getPriceListByInfo(
                 province,market,type,name);
 
@@ -144,7 +154,14 @@ public class Controller {
     //获取过去30天及未来7天的预测价格
     @RequestMapping(value = "/getForecastPrice",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
-    public String getForecast(String province,String market,String type,String name ) {
+    public String getForecast(HttpServletRequest request, String province,String market,String type,String name ) {
+        int id = authenticateService.authenticate(request);
+        if (id != -1){
+            logger.info("正在记录用户价格预测操作，用户id:"+String.valueOf(id)+province+market+type+name);
+            userInfoService.insertLiked(id,province,market,type,name);
+        }else{
+            logger.info("正在记录用户价格预测操作，用户cookie验证失败");
+        }
         List<Map<String, Object>> reList = null;
         try{
             reList = priceForecastService.forecast(province, market, type, name);
@@ -270,5 +287,13 @@ public class Controller {
             retMap.setViewName("register");
             return retMap;
         }
+    }
+
+    //获取用户历史操作数据
+    @RequestMapping(value = "/getHistory",method = RequestMethod.GET,produces={"text/html;charset=UTF-8;","application/json;"})
+    @ResponseBody
+    public String getHistory(HttpServletRequest request){
+        int id = authenticateService.authenticate(request);
+        return userInfoService.getLikeList(id).toString().replace(" ","");
     }
 }

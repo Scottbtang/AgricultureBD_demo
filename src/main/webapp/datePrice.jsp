@@ -41,6 +41,7 @@
         function getMarket(){
             province = $("#select_1").find("option:selected").text();
             $.ajax({
+                async: false,
                 type:"GET",
                 url:"http://localhost:8080/agriculture/getMarket",
                 contentType:"UTF-8",
@@ -67,6 +68,7 @@
         function getType(){
             market = $("#select_2").find("option:selected").text();
             $.ajax({
+                async: false,
                 type:"GET",
                 url:"http://localhost:8080/agriculture/getType",
                 data:{
@@ -92,6 +94,7 @@
         function getName(){
             type = $("#select_3").find("option:selected").text();
             $.ajax({
+                async: false,
                 type:"GET",
                 url:"http://localhost:8080/agriculture/getName",
                 data:{
@@ -118,7 +121,9 @@
 
             name = $("#select_4").find("option:selected").text();
             console.log(province+market+type+name);
-            $.ajax({url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+            $.ajax({
+                async: false,
+                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
                     console.log(result);
                     result = eval("("+result+")");
@@ -134,6 +139,29 @@
             });
         }
 
+        //根据用户信息初始化价格查询界面
+        $.ajax({url:"http://localhost:8080/agriculture/getHistory",
+            success:function(result) {
+                console.log("拉取历史记录成功");
+                result=result.substring(1,result.length-1);
+                var arrayData = result.split(",");
+                var historyProvince = arrayData[0];
+                var historyMarket = arrayData[1];
+                var historyType = arrayData[2];
+                var historyName = arrayData[3];
+                console.log(historyProvince+" "+historyMarket+" "+historyType+" "+historyName);
+                $("#select_1").find("option:contains('"+ historyProvince + "')").attr("selected",true);
+                getMarket();
+                $("#select_2").find("option:contains('"+ historyMarket + "')").attr("selected",true);
+                getType();
+                $("#select_3").find("option:contains('"+ historyType + "')").attr("selected",true);
+                getName();
+                $("#select_4").find("option:contains('"+ historyName + "')").attr("selected",true);
+                getGraph();
+            },error: function() {
+                console.log("历史记录推荐功能失效");
+            }
+        });
 
         $("#select_1").change(getMarket);
         $("#select_2").change(getType);

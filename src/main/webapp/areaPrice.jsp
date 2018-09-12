@@ -20,7 +20,7 @@
             <option value=4>水产品</option>
             <option value=5>副食品</option>
         </select>
-        <label style="font-size:15px;">市场:</label>
+        <label style="font-size:15px;">品名:</label>
         <select id="area_select_2" style="width: 240px;height:30px;">
             <option value=1 selected="selected">请选择</option>
         </select>
