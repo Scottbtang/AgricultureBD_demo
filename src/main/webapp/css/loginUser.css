@@ -1,36 +1,4 @@
-/* ������������֮�� www.lanrenzhijia.com */
-body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, code, del, dfn, em, img, strong, dd, dl, dt, li, ol, ul, fieldset, form, label, button, input, table, caption, tbody, tfoot, thead, tr, th, td, menu {
-	margin:0;
-	padding:0;
-}
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
-	display:block
-}
-audio, canvas, video {
-	display:inline-block;
-*display:inline;
-*zoom:1
-}
-audio:not([controls]) {
-display:none
-}/* ������������֮�� www.lanrenzhijia.com */
-table {
-	border-collapse:collapse;
-	border-spacing:0;
-	empty-cells:show
-}
-ol, ul, menu {
-	list-style:none
-}
-img {
-	border:0
-}
-a:focus {
-	outline:none
-}
-em, i {
-	font-style: normal;
-}
+
 button, input, select, textarea {
 	font-size:100%;
 	margin:0;
@@ -63,17 +31,7 @@ input[type="search"]::-webkit-search-decoration {
 textarea {
 	overflow:auto;
 	vertical-align:top
-}/*
-::selection {
-background:#72d0eb;
-color:#fff;
-text-shadow:none
 }
-::-moz-selection {
-background:#72d0eb;
-color:#fff;
-text-shadow:none
-}*/
 *[hidden] {
 	display:none
 }
@@ -99,7 +57,6 @@ body, button, input, select, textarea, code {
 	font-family:microsoft yahei;
 	color: #444;
 }
-/*window*/
 
 
 /* input */
@@ -117,10 +74,7 @@ body, button, input, select, textarea, code {
 	width: 180px;
 	vertical-align: baseline;
 }
-.ipt-mini {
-	width: 140px;
-	padding: 1px 3px;
-}
+
 .ipt:focus {
 	border-color: #95C8F1;
 	box-shadow: 0 0 4px #95C8F1;
@@ -150,23 +104,7 @@ body, button, input, select, textarea, code {
 input.btn {
 	height: 29px;
 }
-.btn:hover {
-	border-color:#c6c6c6;
-	color:#333;
-	background-color:#f8f8f8;
-	background:-webkit-linear-gradient(top, #f8f8f8, #f1f1f1);
-	background:-moz-linear-gradient(top, #f8f8f8, #f1f1f1);
-	background:linear-gradient(top, #f8f8f8, #f1f1f1);
-	box-shadow:#ddd 0 1px 1px 0;
-}
-.btn:active, .btn.btn-active {
-	box-shadow:#ddd 0 1px 2px 0 inset;
-	border-color:#c6c6c6;
-}
-.btn:focus {
-	border-color:#4d90fe;
-	outline:none
-}
+
 .btn-primary {
 	border-color: #3079ED;
 	color: #F3F7FC;
@@ -253,9 +191,7 @@ input.btn {
 	position: relative;
 }
 .theme-popbod {
-	padding:60px 15px;
 	color:#444;
-	height: 148px;
 }
 .theme-popbom {
 	padding:15px;
@@ -278,87 +214,12 @@ input.btn {
 .theme-poptit .close:hover {
 	color:#444;
 }
-.btn.theme-reg {
-	position: absolute;
-	top: 8px;
-	left: 43%;
-	display: none
-}
-.inp-gray, .feed-mail-inp {
-	border:1px solid #ccc;
-	background-color:#fdfdfd;
-	width:220px;
-	height:16px;
-	padding:4px;
-	color:#444;
-	margin-right:6px
-}
 .dform {
-	padding:80px 60px 40px;
 	text-align: center;
 }
-.dform .ipt_error {
-	background-color:#FFFFCC;
-	border-color:#FFCC66
-}
-.dform-tip {
-	display:none;
-	background-color:#080;
-	color:#fff;
-	line-height:42px;
-	margin-top:10px;
-    display:inline;
-	font-size: 14px;
-}
-.dform-tip-errer {
-	background-color: #CF301A;
-}
-.dform-tip a {
-	display: inline-block;
-	padding: 0 20px;
-	margin-left:10px;
-	background-color: #FFE924;
-	color: #CF301A;
-}
-.dform-login {
-	padding:0;
-	height: 270px;
-	overflow: hidden;
-}
-.dform-login iframe {
-	height: 470px;
-	margin-top: -180px;
-}
-.theme-signin {
-	margin: -50px -20px -50px 90px;
-	text-align:left;
-	font-size: 14px;
-}
-.theme-signin h4 {
-	color:#999;
-	font-weight:100;
-	margin-bottom: 20px;
-	font-size: 12px;
-}
-.theme-signin li {
-	padding-left: 80px;
-	margin-bottom: 15px;
-}
-.theme-signin li strong {
-	float: left;
-	margin-left: -80px;
-	width: 80px;
-	text-align: right;
-	line-height: 32px;
-}
-.theme-signin .btn {
-	margin-bottom: 10px;
-}
-.theme-signin p {
-	font-size: 12px;
-	color: #999;
-}
-.theme-desc, .theme-version {
-	padding-top: 0
-}
-/* ������������֮�� www.lanrenzhijia.com */
+
+
+
+
+
+

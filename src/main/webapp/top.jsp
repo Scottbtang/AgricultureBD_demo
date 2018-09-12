@@ -197,6 +197,56 @@
 			border-top-left-radius:5px;
 			border-top-right-radius:5px;
 		}
+		table{
+			border:0px;
+			text-align: left;
+			text-indent: 3em;
+		}
+		.dform{
+			position: relative;
+			height: 100%;
+		}
+		.dform>li>h4{
+			font-size: 30px;
+		}
+		.control{
+			display: flex;
+			width: 100%;
+			height: 30px;
+			font: 20px/30px sans-serif;
+			overflow: hidden;
+		}
+		.control button{
+			outline: none;
+			border:none;
+			width: 300px;
+			height: 30px;
+			background-color: #fff;
+		}
+		.control button:hover{
+			background-color: #00aeff;
+			color: #fff;
+			transition: background-color .2s;
+		}
+		.inputuser{
+			height: 60px;
+			margin: 42px auto;
+		}
+		.inputuser>strong{
+			display: inline-block;
+			width: 80px;
+			font-size: 20px;
+			line-height: 60px;
+		}
+		.inputuser>input{
+			display: inline-block;
+			width: 280px;
+			height: 60px;
+			font-size: 20px;
+			line-height: 60px;
+		}
+
+
 	</style>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/highcharts.js"></script>
@@ -215,7 +265,6 @@
                 $('.theme-popover-mask').fadeOut(100);
                 $('.theme-popover').slideUp(200);
             })
-
         })
 	</script>
 </head>
@@ -234,29 +283,15 @@
 					<h3>登录</h3>
 				</div>
 				<div class="theme-popbod dform">
-					<%--<li>--%>
-					<%--<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>--%>
-					<%--<li><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>--%>
-					<%--<li><strong>密  码：&nbsp</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>--%>
-						<%--&lt;%&ndash;<li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " id="loginButton"/></li>&ndash;%&gt;--%>
-					<%--<li><button id="loginButton">登 录</button>--%>
-						<%--<button id="registerButton">注 册</button></li>--%>
-					<%--</li>--%>
-							<table border="0" align="center">
-								<h3>欢迎登录全国农业市场信息大数据分析平台</h3>
-								<tr>
-									<th><strong>用户名：</strong></th>
-									<th><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></th>
-								</tr>
-								<tr>
-									<td><strong>密  码：&nbsp</strong></td>
-									<td><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></td>
-								</tr>
-								<tr>
-									<td><button id="loginButton">登 录</button></td>
-									<td><button id="registerButton">注 册</button></td>
-								</tr>
-							</table>
+					<li>
+					<li><h4>欢迎登录全国农业市场信息大数据分析平台</h4></li>
+					<li class="inputuser"><strong>用户名：</strong><input class="ipt" type="text" name="log" value="" size="20" id="inputAccount" /></li>
+					<li class="inputuser"><strong>密&nbsp码：</strong><input class="ipt" type="password" name="pwd" value="" size="20" id="inputPassword"/></li>
+					<li class="control">
+						<button id="loginButton">登 录</button>
+						<button id="registerButton">注 册</button></li>
+					</li>
+
 				</div>
 			</div>
 
@@ -328,7 +363,7 @@
 		}
         $("#registerButton").click(doRegister);
 
-		if(localStorage.getItem('agiculture-status')){
+		if(localStorage.getItem('agiculture-status')=="登录成功"){
 			$("#login-btn").hide();
             $("#logout-btn").show();
         }else{
