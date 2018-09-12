@@ -5,10 +5,12 @@ import cn.edu.seu.agriculture.entity.UserInfo;
 import cn.edu.seu.agriculture.entity.UserInfoExample;
 import cn.edu.seu.agriculture.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserInfoServiceImpl implements UserInfoService {
     @Autowired
     private UserInfoMapper userInfoMapper;
