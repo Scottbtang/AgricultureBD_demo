@@ -200,6 +200,7 @@ public class Controller {
     @RequestMapping(value = "/doRegister",method = RequestMethod.POST, produces={"text/html;charset=UTF-8;","application/json;"})
     @ResponseBody
     public String doRegister(HttpServletResponse response, String username, String password){
+        password=password.split(",")[0];
         logger.info("Controller doing register:"+username+" "+password);
         int re = authenticateService.register(username,password);
         if(re == 0){

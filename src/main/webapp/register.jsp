@@ -11,8 +11,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src='js/jquery-3.3.1.min.js'></script>
     <link rel="stylesheet" href="css/register.css" type="text/css" media="screen"/>
-
-
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/nongye_price.css" />
+    <link rel="stylesheet" type="text/css" href="css/buttonstyle.css" />
+    <link rel="stylesheet" type="text/css" href="css/textStyle.css">
     <style>
         span.reference {
             position:fixed;
@@ -62,11 +64,10 @@
 
 </script>
 <body>
+<jsp:include page="top.jsp"></jsp:include>
     <div class="main_center1" style="width: 1180px;
          height:700px;
-         margin: 0px auto;
-         position: relative;">
-        <jsp:include page="top.jsp"></jsp:include>
+         margin: 0px auto;">
         <div id="content">
             <div id="wrapper">
                 <div id="steps">
@@ -101,7 +102,7 @@
                 </div>
                 <div id="navigation" style="display:none;">
                     <ul>
-                        <li class="selected"> <a href="#">用户信息</a> </li>
+                        <li id="selectedInformation" class="selected"> <a href="#">用户信息</a> </li>
                         <li id="confirmInformation">  </li>
                     </ul>
                 </div>
@@ -139,6 +140,7 @@
     $("#realPassword").bind("input propertychange", function() {
         var tipText=document.getElementById('tip');
         var confirmInformation=document.getElementById('confirmInformation');
+        // var selectedInformation=document.getElementById('selectedInformation');
         var password1=$('#password').val();
         var password2=$('#realPassword').val();
         console.log(password1);
@@ -153,6 +155,7 @@
             aLink.href='#';
             aLink.innerText="确认";
             confirmInformation.appendChild(aLink);
+            // selectedInformation.innerHTML=" ";
         }
 
 
