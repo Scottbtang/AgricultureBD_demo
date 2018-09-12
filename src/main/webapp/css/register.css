@@ -1,4 +1,4 @@
-/* ������������֮�ң�ת����ע�������� */
+
 *{
     margin:0px;
     padding:0px;
@@ -15,7 +15,7 @@ body{
     width:600px;
     position:relative;
     height:100%;
-    top:150px;
+    top:60px;
 }
 #wrapper{
     -moz-box-shadow:0px 0px 3px #aaa;
@@ -59,7 +59,7 @@ body{
     border-right:1px solid #ccc;
     border-left:1px solid #ccc;
     position:relative;
-	margin:0px 2px;
+	margin:0px 70px;
 }
 #navigation ul li a{
     display:block;
@@ -68,6 +68,7 @@ body{
     color:#777;
     outline:none;
     font-weight:bold;
+    font-size:15px;
     text-decoration:none;
     line-height:45px;
     padding:0px 42px;
@@ -83,19 +84,14 @@ body{
         color-stop(0.55, rgb(227,227,227)),
         color-stop(0.78, rgb(240,240,240))
         );
-    background:
-        -moz-linear-gradient(
-        center bottom,
-        rgb(240,240,240) 9%,
-        rgb(227,227,227) 55%,
-        rgb(240,240,240) 78%
-        )
+
 }
 #navigation ul li a:hover,
 #navigation ul li.selected a{
     background:#d8d8d8;
     color:#666;
     text-shadow:1px 1px 1px #fff;
+
 }
 span.checked{
     background:transparent url(../images/checked.png) no-repeat top left;
@@ -121,7 +117,7 @@ span.error{
     text-align:left;
     background-color:#f0f0f0;
     color:#666;
-    font-size:24px;
+    font-size:26px;
     text-shadow:1px 1px 1px #fff;
     font-weight:bold;
     float:left;
@@ -169,6 +165,7 @@ span.error{
     padding: 5px;
     width: 200px;
     float:left;
+
 }
 #steps form input:focus{
     -moz-box-shadow:0px 0px 3px #aaa;
@@ -209,5 +206,3 @@ span.error{
     color:#666;
     text-shadow:1px 1px 1px #fff;
 }
-
-/* ������������֮�ң�ת����ע�������� */

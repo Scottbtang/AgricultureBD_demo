@@ -212,16 +212,18 @@
 		.control{
 			display: flex;
 			width: 100%;
-			height: 30px;
+			height: 60px;
 			font: 20px/30px sans-serif;
-			overflow: hidden;
+			margin-top: 50px;
+			overflow: visible;
 		}
 		.control button{
 			outline: none;
-			border:none;
-			width: 300px;
-			height: 30px;
+			border: none;
+			width: 200px;
+			height: 50px;
 			background-color: #fff;
+			margin-left: 79px;
 		}
 		.control button:hover{
 			background-color: #00aeff;
@@ -229,8 +231,8 @@
 			transition: background-color .2s;
 		}
 		.inputuser{
-			height: 60px;
-			margin: 42px auto;
+			height: 40px;
+			margin: 28px auto;
 		}
 		.inputuser>strong{
 			display: inline-block;
@@ -241,7 +243,7 @@
 		.inputuser>input{
 			display: inline-block;
 			width: 280px;
-			height: 60px;
+			height: 50px;
 			font-size: 20px;
 			line-height: 60px;
 		}

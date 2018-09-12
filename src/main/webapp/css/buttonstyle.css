@@ -13,8 +13,9 @@ button {
     border: 1px solid;
     font: inherit;
     line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
+    margin: 0.3em;
+    padding: 0.1em 1em;
+    height:40px;
 }
 button {
     color: var(--color);

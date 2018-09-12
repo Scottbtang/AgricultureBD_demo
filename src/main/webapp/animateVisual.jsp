@@ -116,10 +116,11 @@
                        name :'尖椒'
                    },
                    {
-                       province:'河北',
-                       market :'河北秦皇岛海阳农副产品批发市场',
+
+                       province:'湖南',
+                       market :'红星实业集团有限公司红星农副产品大市场',
                        type :'蔬菜',
-                       name :'菜花'
+                       name :'土豆'
                    }
                ];
                var animate_data="name,type,value,date\n";

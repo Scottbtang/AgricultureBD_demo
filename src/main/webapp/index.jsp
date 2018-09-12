@@ -18,43 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="css/nongye_price.css" />
 	<link rel="stylesheet" type="text/css" href="css/buttonstyle.css" />
     <link rel="stylesheet" type="text/css" href="css/textStyle.css">
-	<style type="text/css">
-		.dialog_p{
-			width:100%;
-			margin-top:16px;
-			height:60px;
-			text-align: center;
-		}
-		.dialog_p input{
-			width:90%;
-			line-height:25px;
-			padding: 8px 4px 8px 10px;
-			font-size:16px;
-			/* color: #003399; */
-			border: 1px #003399 solid;
-			color:#006699;
-			border-bottom: #93bee2 1px solid;
-			border-left: #93bee2 1px solid;
-			border-right: #93bee2 1px solid;
-			border-top: #93bee2 1px solid;
-			/* 	background-color: #e8f4ff; */
-			cursor: hand;
-			font-style: normal ;
-		}
-		.dialog-btn{ height: auto;}
-		.dialog-btn span{
-			height:40px;
-			line-height:40px;
-			width:90%;
-			font-size: 16px;
-			font-weight: 500;
-		}
 
-		.anchorBL{
-			display: none;
-		}
-
-	</style>
 <style>
 	.a1 {
 		height: 350px;

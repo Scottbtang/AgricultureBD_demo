@@ -65,15 +65,18 @@
 </script>
 <body>
 <jsp:include page="top.jsp"></jsp:include>
+
     <div class="main_center1" style="width: 1180px;
-         height:700px;
+         height:600px;
          margin: 0px auto;">
         <div id="content">
+            <h1>&nbsp;</h1>
+
             <div id="wrapper">
                 <div id="steps">
                     <form id="registerForm" name="formElem" action="http://localhost:8080/agriculture/doRegister" method="post" onsubmit="return sub();">
                         <fieldset class="step">
-                            <legend>用户信息</legend>
+                            <legend>注册</legend>
                             <p>
                                 <label for="username">用户名</label>
                                 <input id="username" name="username" />
@@ -81,12 +84,14 @@
                             <p>
                                 <label for="password">密码</label>
                                 <input id="password" name="password" type="password" AUTOCOMPLETE=OFF />
+
                             </p>
                             <p>
                                 <label for="password">确认密码</label>
                                 <input id="realPassword" name="password" type="password" AUTOCOMPLETE=OFF />
                             </p>
-                            <div id="tip" style="margin-top: 250px;color:  red;">
+
+                            <div id="tip" style="margin-top: 270px;color:  red;">
 
                             </div>
                         </fieldset>
@@ -101,9 +106,12 @@
                     </form>
                 </div>
                 <div id="navigation" style="display:none;">
+
                     <ul>
                         <li id="selectedInformation" class="selected"> <a href="#">用户信息</a> </li>
+
                         <li id="confirmInformation">  </li>
+
                     </ul>
                 </div>
             </div>
@@ -140,7 +148,7 @@
     $("#realPassword").bind("input propertychange", function() {
         var tipText=document.getElementById('tip');
         var confirmInformation=document.getElementById('confirmInformation');
-        // var selectedInformation=document.getElementById('selectedInformation');
+        var selectedInformation=document.getElementById('selectedInformation');
         var password1=$('#password').val();
         var password2=$('#realPassword').val();
         console.log(password1);
@@ -155,7 +163,7 @@
             aLink.href='#';
             aLink.innerText="确认";
             confirmInformation.appendChild(aLink);
-            // selectedInformation.innerHTML=" ";
+            selectedInformation.innerHTML=" ";
         }
 
 

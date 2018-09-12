@@ -24,7 +24,7 @@
         <select id="area_select_2" style="width: 240px;height:30px;">
             <option value=1 selected="selected">请选择</option>
         </select>
-        <input type="button" id="area_queryButton" style="width:70px;height:30px;" value="查询"/>
+        <button id="area_queryButton" class="slide">查询</button>
         <div id="map">
             <div id="price-map">
             </div>
