@@ -95,6 +95,7 @@
 
 
 				<div id="bMap" style="width: 1200px;height:1200px;">
+                    <video src="video/xcp.mp4" width="1180" height="680" controls="controls"></video>
 					<div class ="a1" >
                         <img src="./images/JK.jpg" style="border-radius:20px"  height="350" width="650"/>
 				</div>
@@ -177,10 +178,7 @@
                             </div>
                         </div>
                     </div>
-
-
 	</div>
-        <embed src="video/xcp.mp4" width="1200" height="680" autostart=false>
 		<jsp:include page="bottom.jsp"></jsp:include>
 </div>
 	<%--客服--%>
