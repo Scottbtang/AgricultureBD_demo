@@ -133,8 +133,8 @@
                         <table width="60%" align="right">
                             <tr>
 								<td>
-									<div id="barcon"  name="barcon">
-										   <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+									<div id="barcon"  name="barcon" style="padding-top: 30px">
+
 										<a href="" id="up" style="text-align:center"></a>
 										<a id="h_text2"></a>
 										<a href="" id="down"></a>
@@ -512,12 +512,24 @@
 
                 pageJump.href="#";
                 pageJump.onclick=function(){
-                    goPage(document.getElementById("pageJump_id").value,pageSize);
+                /*    var tempPage=document.getElementById("pageJump_id").value;
+                    goPage(parseInt(tempPage),pageSize);*/
+                 var tempPage=document.getElementById("pageJump_id").value;
+                    if (tempPage <= totalPage&&tempPage>0) {
+                        goPage(parseInt(tempPage),pageSize);
+                    }
+                    else
+                    {
+                        alert("你输入已超出范围")
+                    }
                 };
             } else if(currentPage == 1){
                 var templi3=document.getElementById('up');
                 templi3.innerText="首页";
-
+				templi3.onclik=function()
+				{
+					goPage(currentPage,pageSize);
+				}
 
                 var templi4=document.getElementById('down');
                 templi4.href="#show";
@@ -527,7 +539,16 @@
                 }
                 pageJump.href="#";
                 pageJump.onclick=function(){
-                    goPage(document.getElementById("pageJump_id").value,pageSize);
+                   /* var tempPage=document.getElementById("pageJump_id").value;
+                    goPage(parseInt(tempPage),pageSize);*/
+                    var tempPage=document.getElementById("pageJump_id").value;
+                    if (tempPage <= totalPage&&tempPage>0) {
+                        goPage(parseInt(tempPage),pageSize);
+                    }
+                    else
+                    {
+                        alert("你输入已超出范围")
+                    }
                 }
             }else if(currentPage == totalPage){
                 var templi5 = document.getElementById('up');
@@ -539,10 +560,23 @@
 
                 var templi6=document.getElementById('down');
                 templi6.innerText="尾页";
+                templi6.onclik=function()
+                {
+                    goPage(currentPage,pageSize);
+                }
 
                 pageJump.href="#";
                 pageJump.onclick=function(){
-                    goPage(document.getElementById("pageJump_id").value,pageSize);
+                /*    var tempPage=document.getElementById("pageJump_id").value;
+                    goPage(parseInt(tempPage),pageSize);*/
+                var tempPage=document.getElementById("pageJump_id").value;
+                    if (tempPage <= totalPage&&tempPage>0) {
+                        goPage(parseInt(tempPage),pageSize);
+                    }
+                    else
+                    {
+                        alert("你输入已超出范围")
+                    }
                 }
             }
         }

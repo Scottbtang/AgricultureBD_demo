@@ -35,7 +35,12 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfo.setName(name);
         UserInfoExample example = new UserInfoExample();
         example.createCriteria().andUseridEqualTo(userId);
-        userInfoMapper.updateByExample(userInfo,example);
+        List<UserInfo> query = userInfoMapper.selectByExample(example);
+        if(query.size() <= 0){
+            userInfoMapper.insert(userInfo);
+        }else {
+            userInfoMapper.updateByExample(userInfo,example);
+        }
         return 0;
     }
 }
