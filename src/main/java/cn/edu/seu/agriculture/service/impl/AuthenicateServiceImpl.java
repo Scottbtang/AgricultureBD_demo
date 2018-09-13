@@ -64,6 +64,7 @@ public class AuthenicateServiceImpl implements AuthenticateService {
                     .sign(ALGORITHM);
         } catch (JWTCreationException exception){
             logger.error("JWT CREATE ERROR");
+            return -1;
         }
         System.out.println(token);
         Cookie cookie = new Cookie("jwt",token);
