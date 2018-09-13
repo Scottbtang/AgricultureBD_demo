@@ -26,10 +26,12 @@
               restore : {show: true}, saveAsImage : {show: true}}},
      legend: {data:['价格']},
      xAxis: { data: []},
+
      yAxis: {
-        type : 'value',
+         type : 'value',
          name:'斤/元'
      },
+
      dataZoom:[{type:'inside',start:10,end:60},{type:'slider',start:10,end:60}],
      series: [{ name: '价格', type:"line", data: []  }]
 

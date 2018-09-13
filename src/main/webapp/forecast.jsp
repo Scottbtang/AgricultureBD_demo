@@ -183,6 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             function getMarket(){
                 province = $("#select_1").find("option:selected").text();
                 $.ajax({
+                    async: false,
                     type:"GET",
                     url:"/agriculture/getMarket",
                     contentType:"UTF-8",
@@ -209,6 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             function getType(){
                 market = $("#select_2").find("option:selected").text();
                 $.ajax({
+                    async: false,
                     type:"GET",
                     url:"/agriculture/getType",
                     data:{
@@ -234,6 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             function getName(){
                 type = $("#select_3").find("option:selected").text();
                 $.ajax({
+                    async: false,
                     type:"GET",
                     url:"/agriculture/getName",
                     data:{
@@ -341,6 +344,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
                 return jsonLength;
             }
+
+            //根据用户信息初始化价格预测界面
+            $.ajax({url:"http://localhost:8080/agriculture/getHistory",
+                success:function(result) {
+                    console.log("拉取历史记录成功");
+                    result=result.substring(1,result.length-1);
+                    var arrayData = result.split(",");
+                    var historyProvince = arrayData[0];
+                    var historyMarket = arrayData[1];
+                    var historyType = arrayData[2];
+                    var historyName = arrayData[3];
+                    console.log(historyProvince+" "+historyMarket+" "+historyType+" "+historyName);
+                    $("#select_1").find("option:contains('"+ historyProvince + "')").attr("selected",true);
+                    getMarket();
+                    $("#select_2").find("option:contains('"+ historyMarket + "')").attr("selected",true);
+                    getType();
+                    $("#select_3").find("option:contains('"+ historyType + "')").attr("selected",true);
+                    getName();
+                    $("#select_4").find("option:contains('"+ historyName + "')").attr("selected",true);
+                    getGraph();
+                },error: function() {
+                    console.log("历史记录推荐功能失效");
+                }
+            });
 
             $("#select_1").change(getMarket);
             $("#select_2").change(getType);

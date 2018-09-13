@@ -17,7 +17,7 @@ import java.util.*;
 public class PriceForecastServiceImpl implements PriceForecastService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final double Alpha = 0.7;
+    private static final double Alpha = 0.6;
     private static final int HISTORY_LEN = 30;
 
     @Autowired
@@ -62,8 +62,8 @@ public class PriceForecastServiceImpl implements PriceForecastService {
             doubleStr = df.format(S_n);
             forecastPriceList.add(Double.valueOf(doubleStr));
             for (int j=1; j<day; j++){
-                Double Sj = Alpha * forecastPriceList.get(forecastPriceList.size()-1)
-                                        + (1-Alpha)*forecastPriceList.get(forecastPriceList.size()-2);
+                Double Sj = Alpha * forecastPriceList.get(priceList.size()-1)
+                                        + (1-Alpha)*forecastPriceList.get(forecastPriceList.size()-1);
                 String temp = df.format(Sj);
                 forecastPriceList.add(Double.valueOf(temp));
             }
