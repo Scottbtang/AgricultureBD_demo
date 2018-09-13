@@ -49,7 +49,8 @@
         ],
         yAxis : [
             {
-                type : 'value'
+                type : 'value',
+                name:'斤/元'
             }
         ],
         series : [
@@ -169,7 +170,7 @@
             console.log("条目1"+province+market+type+name);
             $.ajax({
                 async: false,
-                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+                url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
                     result = eval("("+result+")");
                     console.log(result);
@@ -206,7 +207,7 @@
             console.log("条目2"+province+market+type+name);
             $.ajax({
                 async: false,
-                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+                url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
 
                     result = eval("("+result+")");
@@ -279,7 +280,7 @@
             console.log("条目3" + province+market+type+name);
             $.ajax({
                 async: false,
-                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+                url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
 
                     result = eval("("+result+")");
@@ -367,7 +368,7 @@
             console.log("条目4" + province+market+type+name);
             $.ajax({
                 async: false,
-                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+                url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
 
                     result = eval("("+result+")");
@@ -470,7 +471,7 @@
             console.log("条目5" + province+market+type+name);
             $.ajax({
                 async: false,
-                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+                url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
 
                     result = eval("("+result+")");
@@ -587,7 +588,7 @@
             static_province = $("#static_select_1").find("option:selected").text();
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getMarket",
+                url:"/agriculture/getMarket",
                 contentType:"UTF-8",
                 data:{
                     province:static_province
@@ -611,7 +612,7 @@
             static_market = $("#static_select_2").find("option:selected").text();
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getType",
+                url:"/agriculture/getType",
                 data:{
                     province:static_province,
                     market:static_market
@@ -634,7 +635,7 @@
             static_type = $("#static_select_3").find("option:selected").text();
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getName",
+                url:"/agriculture/getName",
                 data:{
                     province:static_province,
                     market:static_market,
@@ -660,7 +661,7 @@
                 $.ajax({
                     async: false,
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/getDataForContrast.do",
+                    url:"/agriculture/getDataForContrast.do",
                     data:{
                         province:data[i].province,
                         market:data[i].market,

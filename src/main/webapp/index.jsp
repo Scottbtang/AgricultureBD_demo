@@ -220,7 +220,7 @@
 
         $.ajax({
             type:"GET",
-            url:"http://localhost:8080/agriculture/monitor",
+            url:"/agriculture/monitor",
             success:function (data) {
                 var mydata = [];
                 console.log(data);

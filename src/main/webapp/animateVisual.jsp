@@ -129,7 +129,7 @@
                    animate_province = $("#animate_select_1").find("option:selected").text();
                    $.ajax({
                        type:"GET",
-                       url:"http://localhost:8080/agriculture/getMarket",
+                       url:"/agriculture/getMarket",
                        contentType:"UTF-8",
                        data:{
                            province:animate_province
@@ -153,7 +153,7 @@
                    animate_market = $("#animate_select_2").find("option:selected").text();
                    $.ajax({
                        type:"GET",
-                       url:"http://localhost:8080/agriculture/getType",
+                       url:"/agriculture/getType",
                        data:{
                            province:animate_province,
                            market:animate_market
@@ -176,7 +176,7 @@
                    animate_type = $("#animate_select_3").find("option:selected").text();
                    $.ajax({
                        type:"GET",
-                       url:"http://localhost:8080/agriculture/getName",
+                       url:"/agriculture/getName",
                        data:{
                            province:animate_province,
                            market:animate_market,
@@ -204,7 +204,7 @@
                        $.ajax({
                            async: false,
                            type:"GET",
-                           url:"http://localhost:8080/agriculture/getDataForContrast.do",
+                           url:"/agriculture/getDataForContrast.do",
                            data:{
                                province:data[i].province,
                                market:data[i].market,

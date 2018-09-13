@@ -49,7 +49,7 @@
                 var area_type = $("#area_select_1").find("option:selected").text();
                 $.ajax({
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/areaGetName",
+                    url:"/agriculture/areaGetName",
                     contentType:"UTF-8",
                     data:{
                         type:area_type,
@@ -77,7 +77,7 @@
                 areaAllData=[];
                 $.ajax({
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/areaGetAllData",
+                    url:"/agriculture/areaGetAllData",
                     contentType:"UTF-8",
                     data:{
                         type:area_type,

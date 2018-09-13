@@ -323,7 +323,7 @@
             localStorage.removeItem('agiculture-status');
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/agriculture/doLogout",
+                url:"/agriculture/doLogout",
                 contentType:"application/x-www-form-urlencoded",
 				data:{
                     method:"logout"
@@ -334,34 +334,39 @@
                     alert("退出系统错误");
                 }
             });
-            window.location.href="http://localhost:8080/agriculture/index.jsp";
+            window.location.href="/agriculture/index.jsp";
         });
         // 点击登录按键
 		function doLogin(){
             var account = $("#inputAccount").val();
             var password = $("#inputPassword").val();
             console.log(account+":"+password);
-            $.ajax({
-                type:"POST",
-                url:"http://localhost:8080/agriculture/doLogin",
-                contentType:"application/x-www-form-urlencoded",
-                data:{
-                    log:account,
-                    pwd:password
-                },
-                success:function (data) {
-                    alert(data);
-					localStorage.setItem('agiculture-status',data);
-                    window.location.reload();
-                },error:function () {
-                    alert("登录提交错误");
-                }
-            });
+            if(( /^[a-zA-Z0-9]{3,18}$/.test(account))&&( /^[a-zA-Z0-9]{3,18}$/.test(password))){
+                $.ajax({
+                    type:"POST",
+                    url:"/agriculture/doLogin",
+                    contentType:"application/x-www-form-urlencoded",
+                    data:{
+                        log:account,
+                        pwd:password
+                    },
+                    success:function (data) {
+                        alert(data);
+                        localStorage.setItem('agiculture-status',data);
+                        window.location.reload();
+                    },error:function () {
+                        alert("登录提交错误");
+                    }
+                });
+			}else{
+                alert("密码应为3-18位字母和数字！");
+			}
+
 		}
         $("#loginButton").click(doLogin);
 
 		function doRegister(){
-            window.location.href="http://localhost:8080/agriculture/register.jsp";
+            window.location.href="/agriculture/register.jsp";
 		}
         $("#registerButton").click(doRegister);
 

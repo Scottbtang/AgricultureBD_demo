@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 province = $("#select_1").find("option:selected").text();
                 $.ajax({
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/getMarket",
+                    url:"/agriculture/getMarket",
                     contentType:"UTF-8",
                     data:{
                         province:province
@@ -210,7 +210,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 market = $("#select_2").find("option:selected").text();
                 $.ajax({
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/getType",
+                    url:"/agriculture/getType",
                     data:{
                         province:province,
                         market:market
@@ -235,7 +235,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 type = $("#select_3").find("option:selected").text();
                 $.ajax({
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/getName",
+                    url:"/agriculture/getName",
                     data:{
                         province:province,
                         market:market,
@@ -266,7 +266,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $.ajax({
 					async: false,
 					type: "GET",
-					url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+					url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                     success:function(result) {
 					    console.log("********请求历史价格")
                         result = eval("("+result+")");
@@ -303,7 +303,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $.ajax({
                     async: false,
                     type:"GET",
-                    url:"http://localhost:8080/agriculture/getForecastPrice.do",
+                    url:"/agriculture/getForecastPrice.do",
                     data:{
                         province:province,
                         market:market,

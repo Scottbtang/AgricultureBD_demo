@@ -26,7 +26,10 @@
               restore : {show: true}, saveAsImage : {show: true}}},
      legend: {data:['价格']},
      xAxis: { data: []},
-     yAxis: {},
+     yAxis: {
+        type : 'value',
+         name:'斤/元'
+     },
      dataZoom:[{type:'inside',start:10,end:60},{type:'slider',start:10,end:60}],
      series: [{ name: '价格', type:"line", data: []  }]
 
@@ -43,7 +46,7 @@
             $.ajax({
                 async: false,
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getMarket",
+                url:"/agriculture/getMarket",
                 contentType:"UTF-8",
                 data:{
                     province:province
@@ -70,7 +73,7 @@
             $.ajax({
                 async: false,
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getType",
+                url:"/agriculture/getType",
                 data:{
                     province:province,
                     market:market
@@ -96,7 +99,7 @@
             $.ajax({
                 async: false,
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getName",
+                url:"/agriculture/getName",
                 data:{
                     province:province,
                     market:market,
@@ -123,7 +126,7 @@
             console.log(province+market+type+name);
             $.ajax({
                 async: false,
-                url:"http://localhost:8080/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
+                url:"/agriculture/datePrice/"+province+"/"+market+"/"+type+"/"+name+".do",
                 success:function(result) {
                     console.log(result);
                     result = eval("("+result+")");
@@ -140,7 +143,7 @@
         }
 
         //根据用户信息初始化价格查询界面
-        $.ajax({url:"http://localhost:8080/agriculture/getHistory",
+        $.ajax({url:"/agriculture/getHistory",
             success:function(result) {
                 console.log("拉取历史记录成功");
                 result=result.substring(1,result.length-1);

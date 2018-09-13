@@ -261,7 +261,7 @@
         function GetMonitorData() {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/agriculture/AllData",
+                url: "/agriculture/AllData",
                 success: function (data) {
                     data=data.substring(1,data.length-1);
                     console.log(data);
@@ -557,7 +557,7 @@
             province = $("#province").find("option:selected").text();
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getMarket",
+                url:"/agriculture/getMarket",
                 contentType:"UTF-8",
                 data:{
                     province:province
@@ -583,7 +583,7 @@
             market = $("#market").find("option:selected").text();
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/agriculture/getType",
+                url:"/agriculture/getType",
                 data:{
                     province:province,
                     market:market
@@ -608,7 +608,7 @@
             type = $("#typeMarket").find("option:selected").text();
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/agriculture/getMarketCount",
+                url: "/agriculture/getMarketCount",
                 data: {
                     province: province,
                     market: market,

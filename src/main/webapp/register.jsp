@@ -44,7 +44,7 @@
         $.ajax({
             cache: true,
             type: "POST",
-            url:"http://localhost:8080/agriculture/doRegister",
+            url:"/agriculture/doRegister",
             data:$('#registerForm').serialize(),// 你的formid
             async: false,
             error: function() {
@@ -55,7 +55,7 @@
                 if (data=="用户名已存在"){
                     window.location.reload();
                 }else{
-                    window.location.href="http://localhost:8080/agriculture/index.jsp";
+                    window.location.href="/agriculture/index.jsp";
                 }
 
             }
@@ -74,7 +74,7 @@
 
             <div id="wrapper">
                 <div id="steps">
-                    <form id="registerForm" name="formElem" action="http://localhost:8080/agriculture/doRegister" method="post" onsubmit="return sub();">
+                    <form id="registerForm" name="formElem" action="/agriculture/doRegister" method="post" onsubmit="return sub();">
                         <fieldset class="step">
                             <legend>注册</legend>
                             <p>
@@ -92,6 +92,9 @@
                             </p>
 
                             <div id="tip" style="margin-top: 270px;color:  red;">
+
+                            </div>
+                            <div id="tip2" style="margin-top: 10px;color:  green;">
 
                             </div>
                         </fieldset>
@@ -142,29 +145,100 @@
 
     $('#navigation').show();
 
-
-
-
-    $("#realPassword").bind("input propertychange", function() {
+    $("#username").bind("input propertychange", function() {
         var tipText=document.getElementById('tip');
+        var tipText2=document.getElementById('tip2');
         var confirmInformation=document.getElementById('confirmInformation');
         var selectedInformation=document.getElementById('selectedInformation');
         var password1=$('#password').val();
         var password2=$('#realPassword').val();
-        console.log(password1);
-        console.log(password2);
-
-        if(password1 != password2){
-            tipText.innerText="您两次密码不一致！";
+        var account=$('#username').val();
+        if(!( /^[a-zA-Z0-9]{3,18}$/.test(account))){
+            tipText.innerText="账号应为3-18位字母和数字！";
+            tipText2.innerText="";
             confirmInformation.innerHTML="";
+            selectedInformation.innerHTML="";
         }else{
-            tipText.innerText="两次密码一致！";
-            var aLink=document.createElement('a');
-            aLink.href='#';
-            aLink.innerText="确认";
-            confirmInformation.appendChild(aLink);
-            selectedInformation.innerHTML=" ";
+            tipText.innerText="";
+            if(password1 !="") {
+                confirmInformation.innerHTML="";
+                if(password1 != password2){
+                    tipText.innerText="您两次密码不一致！";
+                    tipText2.innerText="";
+                    confirmInformation.innerHTML="";
+                }else{
+                    tipText2.innerText="两次密码一致！";
+                    tipText.innerText="";
+                    var aLink=document.createElement('a');
+                    aLink.href='#';
+                    aLink.innerText="确认";
+                    confirmInformation.appendChild(aLink);
+                    selectedInformation.innerHTML=" ";
+                }
+            }
         }
+
+    });
+
+    $("#password").bind("input propertychange", function() {
+        var tipText=document.getElementById('tip');
+        var tipText2=document.getElementById('tip2');
+        var confirmInformation=document.getElementById('confirmInformation');
+        var selectedInformation=document.getElementById('selectedInformation');
+        var password1=$('#password').val();
+        var password2=$('#realPassword').val();
+
+
+        if(!(( /^[a-zA-Z0-9]{3,18}$/.test(password1)))){
+            tipText.innerText="密码应为3-18位字母和数字！";
+            tipText2.innerText="";
+        }else {
+            if(password1 != password2){
+                tipText.innerText="您两次密码不一致！";
+                tipText2.innerText="";
+                confirmInformation.innerHTML="";
+            }else{
+                tipText2.innerText="两次密码一致！";
+                tipText.innerText="";
+                var aLink=document.createElement('a');
+                aLink.href='#';
+                aLink.innerText="确认";
+                confirmInformation.appendChild(aLink);
+                selectedInformation.innerHTML=" ";
+            }
+        }
+    });
+
+
+    $("#realPassword").bind("input propertychange", function() {
+        var tipText=document.getElementById('tip')
+        var tipText2=document.getElementById('tip2');
+        var confirmInformation=document.getElementById('confirmInformation');
+        var selectedInformation=document.getElementById('selectedInformation');
+        var password1=$('#password').val();
+        var password2=$('#realPassword').val();
+        var account=$('#username').val();
+
+        if(!( /^[a-zA-Z0-9]{3,18}$/.test(password1))) {
+            tipText.innerText = "密码应为3-18位字母和数字！";
+            tipText2.innerText="";
+        }else{
+            if(password1 != password2){
+                tipText.innerText="您两次密码不一致！";
+                tipText2.innerText="";
+                confirmInformation.innerHTML="";
+            }else{
+                tipText2.innerText="两次密码一致！";
+                tipText.innerText="";
+                var aLink=document.createElement('a');
+                aLink.href='#';
+                aLink.innerText="确认";
+                confirmInformation.appendChild(aLink);
+                selectedInformation.innerHTML=" ";
+            }
+
+        }
+
 
 
         $('#navigation a').bind('click',function(e){
