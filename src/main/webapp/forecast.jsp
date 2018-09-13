@@ -152,7 +152,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 name:'历史价格',
                 type:'line',
                 tiled: '总量',
-                symbol: 'none',
                 emphasis : {
                     label : {show: true}},
                 itemStyle : {

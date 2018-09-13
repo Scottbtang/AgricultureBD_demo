@@ -147,6 +147,7 @@ public class DatePriceServiceImpl implements DatePriceService {
             if (list == null || list.isEmpty()){
                 throw new DataNotExistException("No data is stored in database!");
             }
+
             Collections.reverse(list);
             return  list;
         }catch (PathInvalidException | DataNotExistException e1){
@@ -259,7 +260,7 @@ public class DatePriceServiceImpl implements DatePriceService {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = null;
         try {
-            date = format.parse("2018-1-1");
+            date = format.parse("2018-5-1");
         } catch (ParseException e) {
             e.printStackTrace();
         }

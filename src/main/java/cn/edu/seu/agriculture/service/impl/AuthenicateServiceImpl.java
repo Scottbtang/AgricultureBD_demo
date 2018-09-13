@@ -88,7 +88,7 @@ public class AuthenicateServiceImpl implements AuthenticateService {
                     .build(); //Reusable verifier instance
             jwt = verifier.verify(cookieValue);
         } catch (JWTVerificationException | IllegalArgumentException exception){
-            exception.printStackTrace();
+//            exception.printStackTrace();
             return -1;
         }
         int userId = jwt.getClaim("userId").asInt();

@@ -17,7 +17,7 @@ import java.util.*;
 public class PriceForecastServiceImpl implements PriceForecastService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final double Alpha = 0.6;
+    private static final double Alpha = 0.5;
     private static final int HISTORY_LEN = 30;
 
     @Autowired
@@ -57,13 +57,19 @@ public class PriceForecastServiceImpl implements PriceForecastService {
                 String temp = df.format(Si);
                 forecastPriceList.add(Double.valueOf(temp));
             }// 到这里 过去值已经都拟合好了
+
+            // 新的第一个数据，依然使用指数加权品平均
             Double S_n = Alpha*priceList.get(priceList.size()-1)
                                         + (1-Alpha)*forecastPriceList.get(forecastPriceList.size()-1);
             doubleStr = df.format(S_n);
             forecastPriceList.add(Double.valueOf(doubleStr));
             for (int j=1; j<day; j++){
-                Double Sj = Alpha * forecastPriceList.get(priceList.size()-1)
-                                        + (1-Alpha)*forecastPriceList.get(forecastPriceList.size()-1);
+//                Double Sj = Alpha * forecastPriceList.get(priceList.size()-1)
+//                                        + (1-Alpha)*forecastPriceList.get(forecastPriceList.size()-1);
+                Double Sj =  new Double(0.0);
+                for(int r = 15; r>0; r--){
+                    Sj += forecastPriceList.get(forecastPriceList.size()-r) / 15;
+                }
                 String temp = df.format(Sj);
                 forecastPriceList.add(Double.valueOf(temp));
             }
