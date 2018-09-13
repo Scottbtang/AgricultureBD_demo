@@ -180,6 +180,7 @@
 
 
 	</div>
+        <embed src="video/xcp.mp4" width="1200" height="680" autostart=false>
 		<jsp:include page="bottom.jsp"></jsp:include>
 </div>
 	<%--客服--%>
